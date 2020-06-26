@@ -13,5 +13,11 @@ namespace ProyectoProgra6.Controllers
         {
             return View();
         }
+
+        [Httppost]
+        public ActionResult Index()
+        {
+            return View();
+        }
     }
 }
