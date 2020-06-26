@@ -1,0 +1,1489 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="progra6bdModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cantones">
+          <Key>
+            <PropertyRef Name="id_canton" />
+          </Key>
+          <Property Name="id_canton" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_provincia" Type="int" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario_creacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="usuario_modificacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_ult_mod" Type="datetime" />
+          <Property Name="vc_estado" Type="varchar" MaxLength="3" />
+          <Property Name="id_canton_inec" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Casa_Fabricante_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Casa_Fabricante" />
+          </Key>
+          <Property Name="Id_Casa_Fabricante" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Id_Pais" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Cedula" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Id_Provincia" Type="int" Nullable="false" />
+          <Property Name="Id_Canton" Type="int" Nullable="false" />
+          <Property Name="Id_Distrito" Type="int" Nullable="false" />
+          <Property Name="Direccion_Fisica" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Telefono" Type="int" Nullable="false" />
+          <Property Name="Correo_Electronico" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Distritos">
+          <Key>
+            <PropertyRef Name="id_distrito" />
+          </Key>
+          <Property Name="id_distrito" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="id_canton" Type="int" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario_creacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="usuario_modificacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_ult_mod" Type="datetime" />
+          <Property Name="vc_estado" Type="varchar" MaxLength="3" />
+          <Property Name="id_distrito_inec" Type="int" />
+        </EntityType>
+        <EntityType Name="Factura_Detalle">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+          </Key>
+          <Property Name="Num_Factura" Type="int" Nullable="false" />
+          <Property Name="Num_Linea" Type="int" Nullable="false" />
+          <Property Name="Id_Tipo_Servicio_Producto" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="money" Nullable="false" />
+          <Property Name="Total_Linea" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Factura_Encabezado">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+          </Key>
+          <Property Name="Num_Factura" Type="int" Nullable="false" />
+          <Property Name="Fecha_Factura" Type="datetime" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+          <Property Name="Total_Factura" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Marca_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Marca_Vehiculo" />
+          </Key>
+          <Property Name="Id_Marca_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Id_Casa_Fabricante" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modelo_Marca_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Modelo_Marca_Vehiculo" />
+          </Key>
+          <Property Name="Id_Modelo_Marca_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Id_Marca_Vehiculo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+          </Key>
+          <Property Name="Id_Pais" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Provincias">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="usuario_creacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_creacion" Type="datetime" />
+          <Property Name="usuario_modificacion" Type="varchar" MaxLength="50" />
+          <Property Name="fecha_ult_mod" Type="datetime" />
+          <Property Name="vc_estado" Type="varchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Tipo_Servicio_Producto">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Servicio_Producto" />
+          </Key>
+          <Property Name="Id_Tipo_Servicio_Producto" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="int" />
+        </EntityType>
+        <EntityType Name="Tipo_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Vehiculo" />
+          </Key>
+          <Property Name="Id_Tipo_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Codigo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contrasena" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rol" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Vehiculo" />
+          </Key>
+          <Property Name="Id_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Placa" Type="int" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Id_Tipo_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Id_Modelo_Marca_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Cant_Puertas" Type="int" Nullable="false" />
+          <Property Name="Cant_Ruedas" Type="int" Nullable="false" />
+          <Property Name="Anio_Fabricacion" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculo_Cliente">
+          <Key>
+            <PropertyRef Name="Id_Vehiculo_Cliente" />
+          </Key>
+          <Property Name="Id_Vehiculo_Cliente" Type="int" Nullable="false" />
+          <Property Name="Id_Vehiculo" Type="int" Nullable="false" />
+          <Property Name="Id_Cliente" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="Canton_ref_Provincia">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="Cantones">
+              <PropertyRef Name="id_provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Distrito_ref_Canton">
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="0..1" />
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantones">
+              <PropertyRef Name="id_canton" />
+            </Principal>
+            <Dependent Role="Distritos">
+              <PropertyRef Name="id_canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Casa_Fabricante_Vehiculo_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Casa_Fabricante_Vehiculo" Type="Self.Casa_Fabricante_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Pais">
+              <PropertyRef Name="Id_Pais" />
+            </Principal>
+            <Dependent Role="Casa_Fabricante_Vehiculo">
+              <PropertyRef Name="Id_Pais" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Cantones">
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cantones">
+              <PropertyRef Name="id_canton" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Id_Canton" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Distritos">
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Distritos">
+              <PropertyRef Name="id_distrito" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Id_Distrito" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Provincias">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provincias">
+              <PropertyRef Name="id_provincia" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Id_Provincia" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Detalle_Factura_Encabezado">
+          <End Role="Factura_Encabezado" Type="Self.Factura_Encabezado" Multiplicity="1" />
+          <End Role="Factura_Detalle" Type="Self.Factura_Detalle" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Factura_Encabezado">
+              <PropertyRef Name="Num_Factura" />
+            </Principal>
+            <Dependent Role="Factura_Detalle">
+              <PropertyRef Name="Num_Factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Detalle_Tipo_Servicio_Producto">
+          <End Role="Tipo_Servicio_Producto" Type="Self.Tipo_Servicio_Producto" Multiplicity="1" />
+          <End Role="Factura_Detalle" Type="Self.Factura_Detalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Servicio_Producto">
+              <PropertyRef Name="Id_Tipo_Servicio_Producto" />
+            </Principal>
+            <Dependent Role="Factura_Detalle">
+              <PropertyRef Name="Id_Tipo_Servicio_Producto" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Encabezado_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Factura_Encabezado" Type="Self.Factura_Encabezado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Factura_Encabezado">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo">
+          <End Role="Casa_Fabricante_Vehiculo" Type="Self.Casa_Fabricante_Vehiculo" Multiplicity="1" />
+          <End Role="Marca_Vehiculo" Type="Self.Marca_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Casa_Fabricante_Vehiculo">
+              <PropertyRef Name="Id_Casa_Fabricante" />
+            </Principal>
+            <Dependent Role="Marca_Vehiculo">
+              <PropertyRef Name="Id_Casa_Fabricante" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Modelo_Marca_Vehiculo_Marca_Vehiculo">
+          <End Role="Marca_Vehiculo" Type="Self.Marca_Vehiculo" Multiplicity="1" />
+          <End Role="Modelo_Marca_Vehiculo" Type="Self.Modelo_Marca_Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Marca_Vehiculo">
+              <PropertyRef Name="Id_Marca_Vehiculo" />
+            </Principal>
+            <Dependent Role="Modelo_Marca_Vehiculo">
+              <PropertyRef Name="Id_Marca_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Cliente_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Vehiculo_Cliente" Type="Self.Vehiculo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cliente">
+              <PropertyRef Name="Id_Cliente" />
+            </Principal>
+            <Dependent Role="Vehiculo_Cliente">
+              <PropertyRef Name="Id_Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Cliente_Vehiculo">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculo_Cliente" Type="Self.Vehiculo_Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehiculo">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo_Cliente">
+              <PropertyRef Name="Id_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Modelo_Marca_Vehiculo">
+          <End Role="Modelo_Marca_Vehiculo" Type="Self.Modelo_Marca_Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modelo_Marca_Vehiculo">
+              <PropertyRef Name="Id_Modelo_Marca_Vehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="Id_Modelo_Marca_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehiculo_Tipo_Vehiculo">
+          <End Role="Tipo_Vehiculo" Type="Self.Tipo_Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tipo_Vehiculo">
+              <PropertyRef Name="Id_Tipo_Vehiculo" />
+            </Principal>
+            <Dependent Role="Vehiculo">
+              <PropertyRef Name="Id_Tipo_Vehiculo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_DeleteVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Vehiculo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_EliminaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_canton_inec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertaDistrito" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Canton" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_DistritoInec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertCasaFabricanteVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Casa_Fabricante" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Codigo" Type="int" Mode="In" />
+          <Parameter Name="Id_Pais" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_InsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="Id_Provincia" Type="int" Mode="In" />
+          <Parameter Name="Id_Canton" Type="int" Mode="In" />
+          <Parameter Name="Id_Distrito" Type="int" Mode="In" />
+          <Parameter Name="Direccion_Fisica" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="int" Mode="In" />
+          <Parameter Name="Correo_Electronico" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_ModificaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_canton_inec" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaCantones" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaCantonesid_canton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaDistritos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_RetornaProvincias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="nombre" Type="varchar" Mode="In" />
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SelectModeloMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Marca_Vehiculo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_SelectVehiculoCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Cliente" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Cedula" Type="varchar" Mode="In" />
+          <Parameter Name="id_provincia" Type="int" Mode="In" />
+          <Parameter Name="id_canton" Type="int" Mode="In" />
+          <Parameter Name="id_distrito" Type="int" Mode="In" />
+          <Parameter Name="direccion_fisica" Type="varchar" Mode="In" />
+          <Parameter Name="Telefono" Type="int" Mode="In" />
+          <Parameter Name="Correo_electronico" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_UpdateVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id_Vehiculo" Type="int" Mode="In" />
+          <Parameter Name="Placa" Type="varchar" Mode="In" />
+          <Parameter Name="Marca" Type="varchar" Mode="In" />
+          <Parameter Name="id_Tipo_Vehiculo" Type="int" Mode="In" />
+          <Parameter Name="id_Modelo_Marca_Vehiculo" Type="int" Mode="In" />
+          <Parameter Name="Cant_Puertas" Type="int" Mode="In" />
+          <Parameter Name="Ruedas" Type="int" Mode="In" />
+          <Parameter Name="Anio_Fabricacion" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="progra6bdModeloStoreContainer">
+          <EntitySet Name="Cantones" EntityType="Self.Cantones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Casa_Fabricante_Vehiculo" EntityType="Self.Casa_Fabricante_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Distritos" EntityType="Self.Distritos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura_Detalle" EntityType="Self.Factura_Detalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Factura_Encabezado" EntityType="Self.Factura_Encabezado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Marca_Vehiculo" EntityType="Self.Marca_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modelo_Marca_Vehiculo" EntityType="Self.Modelo_Marca_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Servicio_Producto" EntityType="Self.Tipo_Servicio_Producto" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipo_Vehiculo" EntityType="Self.Tipo_Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehiculo_Cliente" EntityType="Self.Vehiculo_Cliente" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Canton_ref_Provincia" Association="Self.Canton_ref_Provincia">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cantones" EntitySet="Cantones" />
+          </AssociationSet>
+          <AssociationSet Name="Distrito_ref_Canton" Association="Self.Distrito_ref_Canton">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Distritos" EntitySet="Distritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Casa_Fabricante_Vehiculo_Pais" Association="Self.FK_Casa_Fabricante_Vehiculo_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Casa_Fabricante_Vehiculo" EntitySet="Casa_Fabricante_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Cantones" Association="Self.FK_Cliente_Cantones">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Distritos" Association="Self.FK_Cliente_Distritos">
+            <End Role="Distritos" EntitySet="Distritos" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Provincias" Association="Self.FK_Cliente_Provincias">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Detalle_Factura_Encabezado" Association="Self.FK_Factura_Detalle_Factura_Encabezado">
+            <End Role="Factura_Encabezado" EntitySet="Factura_Encabezado" />
+            <End Role="Factura_Detalle" EntitySet="Factura_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Detalle_Tipo_Servicio_Producto" Association="Self.FK_Factura_Detalle_Tipo_Servicio_Producto">
+            <End Role="Tipo_Servicio_Producto" EntitySet="Tipo_Servicio_Producto" />
+            <End Role="Factura_Detalle" EntitySet="Factura_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Encabezado_Cliente" Association="Self.FK_Factura_Encabezado_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Factura_Encabezado" EntitySet="Factura_Encabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" Association="Self.FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo">
+            <End Role="Casa_Fabricante_Vehiculo" EntitySet="Casa_Fabricante_Vehiculo" />
+            <End Role="Marca_Vehiculo" EntitySet="Marca_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" Association="Self.FK_Modelo_Marca_Vehiculo_Marca_Vehiculo">
+            <End Role="Marca_Vehiculo" EntitySet="Marca_Vehiculo" />
+            <End Role="Modelo_Marca_Vehiculo" EntitySet="Modelo_Marca_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Cliente_Cliente" Association="Self.FK_Vehiculo_Cliente_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Vehiculo_Cliente" EntitySet="Vehiculo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Cliente_Vehiculo" Association="Self.FK_Vehiculo_Cliente_Vehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Vehiculo_Cliente" EntitySet="Vehiculo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Modelo_Marca_Vehiculo" Association="Self.FK_Vehiculo_Modelo_Marca_Vehiculo">
+            <End Role="Modelo_Marca_Vehiculo" EntitySet="Modelo_Marca_Vehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Tipo_Vehiculo" Association="Self.FK_Vehiculo_Tipo_Vehiculo">
+            <End Role="Tipo_Vehiculo" EntitySet="Tipo_Vehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="progra6bdModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cantones">
+          <Key>
+            <PropertyRef Name="id_canton" />
+          </Key>
+          <Property Name="id_canton" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="usuario_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="id_canton_inec" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Provincias" Relationship="Self.Canton_ref_Provincia" FromRole="Cantones" ToRole="Provincias" />
+          <NavigationProperty Name="Distritos" Relationship="Self.Distrito_ref_Canton" FromRole="Cantones" ToRole="Distritos" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Cantones" FromRole="Cantones" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Casa_Fabricante_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Casa_Fabricante" />
+          </Key>
+          <Property Name="Id_Casa_Fabricante" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Pais" Relationship="Self.FK_Casa_Fabricante_Vehiculo_Pais" FromRole="Casa_Fabricante_Vehiculo" ToRole="Pais" />
+          <NavigationProperty Name="Marca_Vehiculo" Relationship="Self.FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" FromRole="Casa_Fabricante_Vehiculo" ToRole="Marca_Vehiculo" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id_Cliente" />
+          </Key>
+          <Property Name="Id_Cliente" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion_Fisica" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="Int32" Nullable="false" />
+          <Property Name="Correo_Electronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cantones" Relationship="Self.FK_Cliente_Cantones" FromRole="Cliente" ToRole="Cantones" />
+          <NavigationProperty Name="Distritos" Relationship="Self.FK_Cliente_Distritos" FromRole="Cliente" ToRole="Distritos" />
+          <NavigationProperty Name="Provincias" Relationship="Self.FK_Cliente_Provincias" FromRole="Cliente" ToRole="Provincias" />
+          <NavigationProperty Name="Factura_Encabezado" Relationship="Self.FK_Factura_Encabezado_Cliente" FromRole="Cliente" ToRole="Factura_Encabezado" />
+          <NavigationProperty Name="Vehiculo_Cliente" Relationship="Self.FK_Vehiculo_Cliente_Cliente" FromRole="Cliente" ToRole="Vehiculo_Cliente" />
+        </EntityType>
+        <EntityType Name="Distritos">
+          <Key>
+            <PropertyRef Name="id_distrito" />
+          </Key>
+          <Property Name="id_distrito" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="usuario_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <Property Name="id_distrito_inec" Type="Int32" />
+          <NavigationProperty Name="Cantones" Relationship="Self.Distrito_ref_Canton" FromRole="Distritos" ToRole="Cantones" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Distritos" FromRole="Distritos" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="Factura_Detalle">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+          </Key>
+          <Property Name="Num_Factura" Type="Int32" Nullable="false" />
+          <Property Name="Num_Linea" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="Total_Linea" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Factura_Encabezado" Relationship="Self.FK_Factura_Detalle_Factura_Encabezado" FromRole="Factura_Detalle" ToRole="Factura_Encabezado" />
+          <NavigationProperty Name="Tipo_Servicio_Producto" Relationship="Self.FK_Factura_Detalle_Tipo_Servicio_Producto" FromRole="Factura_Detalle" ToRole="Tipo_Servicio_Producto" />
+        </EntityType>
+        <EntityType Name="Factura_Encabezado">
+          <Key>
+            <PropertyRef Name="Num_Factura" />
+          </Key>
+          <Property Name="Num_Factura" Type="Int32" Nullable="false" />
+          <Property Name="Fecha_Factura" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Total_Factura" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Factura_Encabezado_Cliente" FromRole="Factura_Encabezado" ToRole="Cliente" />
+          <NavigationProperty Name="Factura_Detalle" Relationship="Self.FK_Factura_Detalle_Factura_Encabezado" FromRole="Factura_Encabezado" ToRole="Factura_Detalle" />
+        </EntityType>
+        <EntityType Name="Marca_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Marca_Vehiculo" />
+          </Key>
+          <Property Name="Id_Marca_Vehiculo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Casa_Fabricante_Vehiculo" Relationship="Self.FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" FromRole="Marca_Vehiculo" ToRole="Casa_Fabricante_Vehiculo" />
+          <NavigationProperty Name="Modelo_Marca_Vehiculo" Relationship="Self.FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" FromRole="Marca_Vehiculo" ToRole="Modelo_Marca_Vehiculo" />
+        </EntityType>
+        <EntityType Name="Modelo_Marca_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Modelo_Marca_Vehiculo" />
+          </Key>
+          <Property Name="Id_Modelo_Marca_Vehiculo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Marca_Vehiculo" Relationship="Self.FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" FromRole="Modelo_Marca_Vehiculo" ToRole="Marca_Vehiculo" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Modelo_Marca_Vehiculo" FromRole="Modelo_Marca_Vehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Pais">
+          <Key>
+            <PropertyRef Name="Id_Pais" />
+          </Key>
+          <Property Name="Id_Pais" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Casa_Fabricante_Vehiculo" Relationship="Self.FK_Casa_Fabricante_Vehiculo_Pais" FromRole="Pais" ToRole="Casa_Fabricante_Vehiculo" />
+        </EntityType>
+        <EntityType Name="Provincias">
+          <Key>
+            <PropertyRef Name="id_provincia" />
+          </Key>
+          <Property Name="id_provincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="usuario_creacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_creacion" Type="DateTime" Precision="3" />
+          <Property Name="usuario_modificacion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fecha_ult_mod" Type="DateTime" Precision="3" />
+          <Property Name="vc_estado" Type="String" MaxLength="3" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Cantones" Relationship="Self.Canton_ref_Provincia" FromRole="Provincias" ToRole="Cantones" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cliente_Provincias" FromRole="Provincias" ToRole="Cliente" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Tipo_Servicio_Producto">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Servicio_Producto" />
+          </Key>
+          <Property Name="Id_Tipo_Servicio_Producto" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Int32" />
+          <NavigationProperty Name="Factura_Detalle" Relationship="Self.FK_Factura_Detalle_Tipo_Servicio_Producto" FromRole="Tipo_Servicio_Producto" ToRole="Factura_Detalle" />
+        </EntityType>
+        <EntityType Name="Tipo_Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Tipo_Vehiculo" />
+          </Key>
+          <Property Name="Id_Tipo_Vehiculo" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Codigo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Tipo_Vehiculo" FromRole="Tipo_Vehiculo" ToRole="Vehiculo" />
+        </EntityType>
+        <EntityType Name="Usuario">
+          <Key>
+            <PropertyRef Name="Id_Usuario" />
+          </Key>
+          <Property Name="Id_Usuario" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Rol" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehiculo">
+          <Key>
+            <PropertyRef Name="Id_Vehiculo" />
+          </Key>
+          <Property Name="Id_Vehiculo" Type="Int32" Nullable="false" />
+          <Property Name="Placa" Type="Int32" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cant_Puertas" Type="Int32" Nullable="false" />
+          <Property Name="Cant_Ruedas" Type="Int32" Nullable="false" />
+          <Property Name="Anio_Fabricacion" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Modelo_Marca_Vehiculo" Relationship="Self.FK_Vehiculo_Modelo_Marca_Vehiculo" FromRole="Vehiculo" ToRole="Modelo_Marca_Vehiculo" />
+          <NavigationProperty Name="Tipo_Vehiculo" Relationship="Self.FK_Vehiculo_Tipo_Vehiculo" FromRole="Vehiculo" ToRole="Tipo_Vehiculo" />
+          <NavigationProperty Name="Vehiculo_Cliente" Relationship="Self.FK_Vehiculo_Cliente_Vehiculo" FromRole="Vehiculo" ToRole="Vehiculo_Cliente" />
+        </EntityType>
+        <EntityType Name="Vehiculo_Cliente">
+          <Key>
+            <PropertyRef Name="Id_Vehiculo_Cliente" />
+          </Key>
+          <Property Name="Id_Vehiculo_Cliente" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Vehiculo_Cliente_Cliente" FromRole="Vehiculo_Cliente" ToRole="Cliente" />
+          <NavigationProperty Name="Vehiculo" Relationship="Self.FK_Vehiculo_Cliente_Vehiculo" FromRole="Vehiculo_Cliente" ToRole="Vehiculo" />
+        </EntityType>
+        <Association Name="Canton_ref_Provincia">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="*" />
+        </Association>
+        <Association Name="Distrito_ref_Canton">
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="0..1" />
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Cliente_Cantones">
+          <End Role="Cantones" Type="Self.Cantones" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Casa_Fabricante_Vehiculo_Pais">
+          <End Role="Pais" Type="Self.Pais" Multiplicity="1" />
+          <End Role="Casa_Fabricante_Vehiculo" Type="Self.Casa_Fabricante_Vehiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo">
+          <End Role="Casa_Fabricante_Vehiculo" Type="Self.Casa_Fabricante_Vehiculo" Multiplicity="1" />
+          <End Role="Marca_Vehiculo" Type="Self.Marca_Vehiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Cliente_Distritos">
+          <End Role="Distritos" Type="Self.Distritos" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Cliente_Provincias">
+          <End Role="Provincias" Type="Self.Provincias" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Factura_Encabezado_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Factura_Encabezado" Type="Self.Factura_Encabezado" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Vehiculo_Cliente_Cliente">
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="1" />
+          <End Role="Vehiculo_Cliente" Type="Self.Vehiculo_Cliente" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Factura_Detalle_Factura_Encabezado">
+          <End Role="Factura_Encabezado" Type="Self.Factura_Encabezado" Multiplicity="1" />
+          <End Role="Factura_Detalle" Type="Self.Factura_Detalle" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Factura_Encabezado">
+              <PropertyRef Name="Num_Factura" />
+            </Principal>
+            <Dependent Role="Factura_Detalle">
+              <PropertyRef Name="Num_Factura" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Factura_Detalle_Tipo_Servicio_Producto">
+          <End Role="Tipo_Servicio_Producto" Type="Self.Tipo_Servicio_Producto" Multiplicity="1" />
+          <End Role="Factura_Detalle" Type="Self.Factura_Detalle" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Modelo_Marca_Vehiculo_Marca_Vehiculo">
+          <End Role="Marca_Vehiculo" Type="Self.Marca_Vehiculo" Multiplicity="1" />
+          <End Role="Modelo_Marca_Vehiculo" Type="Self.Modelo_Marca_Vehiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Vehiculo_Modelo_Marca_Vehiculo">
+          <End Role="Modelo_Marca_Vehiculo" Type="Self.Modelo_Marca_Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Vehiculo_Tipo_Vehiculo">
+          <End Role="Tipo_Vehiculo" Type="Self.Tipo_Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Vehiculo_Cliente_Vehiculo">
+          <End Role="Vehiculo" Type="Self.Vehiculo" Multiplicity="1" />
+          <End Role="Vehiculo_Cliente" Type="Self.Vehiculo_Cliente" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="progra6bdEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cantones" EntityType="Self.Cantones" />
+          <EntitySet Name="Casa_Fabricante_Vehiculo" EntityType="Self.Casa_Fabricante_Vehiculo" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Distritos" EntityType="Self.Distritos" />
+          <EntitySet Name="Factura_Detalle" EntityType="Self.Factura_Detalle" />
+          <EntitySet Name="Factura_Encabezado" EntityType="Self.Factura_Encabezado" />
+          <EntitySet Name="Marca_Vehiculo" EntityType="Self.Marca_Vehiculo" />
+          <EntitySet Name="Modelo_Marca_Vehiculo" EntityType="Self.Modelo_Marca_Vehiculo" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Tipo_Servicio_Producto" EntityType="Self.Tipo_Servicio_Producto" />
+          <EntitySet Name="Tipo_Vehiculo" EntityType="Self.Tipo_Vehiculo" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" />
+          <EntitySet Name="Vehiculo_Cliente" EntityType="Self.Vehiculo_Cliente" />
+          <AssociationSet Name="Canton_ref_Provincia" Association="Self.Canton_ref_Provincia">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cantones" EntitySet="Cantones" />
+          </AssociationSet>
+          <AssociationSet Name="Distrito_ref_Canton" Association="Self.Distrito_ref_Canton">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Distritos" EntitySet="Distritos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Cantones" Association="Self.FK_Cliente_Cantones">
+            <End Role="Cantones" EntitySet="Cantones" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Casa_Fabricante_Vehiculo_Pais" Association="Self.FK_Casa_Fabricante_Vehiculo_Pais">
+            <End Role="Pais" EntitySet="Pais" />
+            <End Role="Casa_Fabricante_Vehiculo" EntitySet="Casa_Fabricante_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" Association="Self.FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo">
+            <End Role="Casa_Fabricante_Vehiculo" EntitySet="Casa_Fabricante_Vehiculo" />
+            <End Role="Marca_Vehiculo" EntitySet="Marca_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Distritos" Association="Self.FK_Cliente_Distritos">
+            <End Role="Distritos" EntitySet="Distritos" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Provincias" Association="Self.FK_Cliente_Provincias">
+            <End Role="Provincias" EntitySet="Provincias" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Encabezado_Cliente" Association="Self.FK_Factura_Encabezado_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Factura_Encabezado" EntitySet="Factura_Encabezado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Cliente_Cliente" Association="Self.FK_Vehiculo_Cliente_Cliente">
+            <End Role="Cliente" EntitySet="Cliente" />
+            <End Role="Vehiculo_Cliente" EntitySet="Vehiculo_Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Detalle_Factura_Encabezado" Association="Self.FK_Factura_Detalle_Factura_Encabezado">
+            <End Role="Factura_Encabezado" EntitySet="Factura_Encabezado" />
+            <End Role="Factura_Detalle" EntitySet="Factura_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Factura_Detalle_Tipo_Servicio_Producto" Association="Self.FK_Factura_Detalle_Tipo_Servicio_Producto">
+            <End Role="Tipo_Servicio_Producto" EntitySet="Tipo_Servicio_Producto" />
+            <End Role="Factura_Detalle" EntitySet="Factura_Detalle" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" Association="Self.FK_Modelo_Marca_Vehiculo_Marca_Vehiculo">
+            <End Role="Marca_Vehiculo" EntitySet="Marca_Vehiculo" />
+            <End Role="Modelo_Marca_Vehiculo" EntitySet="Modelo_Marca_Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Modelo_Marca_Vehiculo" Association="Self.FK_Vehiculo_Modelo_Marca_Vehiculo">
+            <End Role="Modelo_Marca_Vehiculo" EntitySet="Modelo_Marca_Vehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Tipo_Vehiculo" Association="Self.FK_Vehiculo_Tipo_Vehiculo">
+            <End Role="Tipo_Vehiculo" EntitySet="Tipo_Vehiculo" />
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehiculo_Cliente_Vehiculo" Association="Self.FK_Vehiculo_Cliente_Vehiculo">
+            <End Role="Vehiculo" EntitySet="Vehiculo" />
+            <End Role="Vehiculo_Cliente" EntitySet="Vehiculo_Cliente" />
+          </AssociationSet>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteCliente">
+            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_DeleteVehiculo">
+            <Parameter Name="Id_Vehiculo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_EliminaCanton">
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(progra6bdModelo.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(progra6bdModelo.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertaCanton">
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_canton_inec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertaDistrito">
+            <Parameter Name="id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_DistritoInec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertCasaFabricanteVehiculo">
+            <Parameter Name="Id_Casa_Fabricante" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Codigo" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Pais" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertCliente">
+            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="Direccion_Fisica" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="Int32" />
+            <Parameter Name="Correo_Electronico" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_ModificaCanton">
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_canton_inec" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaCantones" ReturnType="Collection(progra6bdModelo.sp_RetornaCantones_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaCantonesid_canton" ReturnType="Collection(progra6bdModelo.sp_RetornaCantonesid_canton_Result)">
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaDistritos" ReturnType="Collection(progra6bdModelo.sp_RetornaDistritos_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaProvincias" ReturnType="Collection(progra6bdModelo.sp_RetornaProvincias_Result)">
+            <Parameter Name="nombre" Mode="In" Type="String" />
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SelectModeloMarcaVehiculo" ReturnType="Collection(String)">
+            <Parameter Name="Id_Marca_Vehiculo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_SelectVehiculoCliente" ReturnType="Collection(progra6bdModelo.sp_SelectVehiculoCliente_Result)">
+            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateCliente">
+            <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
+            <Parameter Name="id_canton" Mode="In" Type="Int32" />
+            <Parameter Name="id_distrito" Mode="In" Type="Int32" />
+            <Parameter Name="direccion_fisica" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="Int32" />
+            <Parameter Name="Correo_electronico" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_UpdateVehiculo">
+            <Parameter Name="id_Vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="Placa" Mode="In" Type="String" />
+            <Parameter Name="Marca" Mode="In" Type="String" />
+            <Parameter Name="id_Tipo_Vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="id_Modelo_Marca_Vehiculo" Mode="In" Type="Int32" />
+            <Parameter Name="Cant_Puertas" Mode="In" Type="Int32" />
+            <Parameter Name="Ruedas" Mode="In" Type="Int32" />
+            <Parameter Name="Anio_Fabricacion" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaCantones_Result">
+          <Property Type="Int32" Name="id_canton" Nullable="false" />
+          <Property Type="Int32" Name="id_provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_canton_inec" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaCantonesid_canton_Result">
+          <Property Type="Int32" Name="id_canton" Nullable="false" />
+          <Property Type="Int32" Name="id_provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_canton_inec" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaDistritos_Result">
+          <Property Type="Int32" Name="id_distrito" Nullable="false" />
+          <Property Type="Int32" Name="id_canton" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="Canton" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+          <Property Type="Int32" Name="id_distrito_inec" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaProvincias_Result">
+          <Property Type="Int32" Name="id_provincia" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="usuario_creacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_creacion" Nullable="true" Precision="23" />
+          <Property Type="String" Name="usuario_modificacion" Nullable="true" MaxLength="50" />
+          <Property Type="DateTime" Name="fecha_ult_mod" Nullable="true" Precision="23" />
+          <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
+        </ComplexType>
+        <ComplexType Name="sp_SelectVehiculoCliente_Result">
+          <Property Type="Int32" Name="Id_Vehiculo" Nullable="false" />
+          <Property Type="Int32" Name="Placa" Nullable="false" />
+          <Property Type="String" Name="Marca" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="Id_Tipo_Vehiculo" Nullable="false" />
+          <Property Type="Int32" Name="Id_Modelo_Marca_Vehiculo" Nullable="false" />
+          <Property Type="Int32" Name="Cant_Puertas" Nullable="false" />
+          <Property Type="Int32" Name="Cant_Ruedas" Nullable="false" />
+          <Property Type="Int32" Name="Anio_Fabricacion" Nullable="false" />
+          <Property Type="Int32" Name="Id_Vehiculo_Cliente" Nullable="false" />
+          <Property Type="Int32" Name="Id_Vehiculo1" Nullable="false" />
+          <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="progra6bdModeloStoreContainer" CdmEntityContainer="progra6bdEntities">
+          <EntitySetMapping Name="Cantones">
+            <EntityTypeMapping TypeName="progra6bdModelo.Cantones">
+              <MappingFragment StoreEntitySet="Cantones">
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_canton_inec" ColumnName="id_canton_inec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Casa_Fabricante_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModelo.Casa_Fabricante_Vehiculo">
+              <MappingFragment StoreEntitySet="Casa_Fabricante_Vehiculo">
+                <ScalarProperty Name="Id_Casa_Fabricante" ColumnName="Id_Casa_Fabricante" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="progra6bdModelo.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Direccion_Fisica" ColumnName="Direccion_Fisica" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Distritos">
+            <EntityTypeMapping TypeName="progra6bdModelo.Distritos">
+              <MappingFragment StoreEntitySet="Distritos">
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_distrito_inec" ColumnName="id_distrito_inec" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura_Detalle">
+            <EntityTypeMapping TypeName="progra6bdModelo.Factura_Detalle">
+              <MappingFragment StoreEntitySet="Factura_Detalle">
+                <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
+                <ScalarProperty Name="Num_Linea" ColumnName="Num_Linea" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Total_Linea" ColumnName="Total_Linea" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Factura_Encabezado">
+            <EntityTypeMapping TypeName="progra6bdModelo.Factura_Encabezado">
+              <MappingFragment StoreEntitySet="Factura_Encabezado">
+                <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
+                <ScalarProperty Name="Fecha_Factura" ColumnName="Fecha_Factura" />
+                <ScalarProperty Name="Total_Factura" ColumnName="Total_Factura" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Marca_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModelo.Marca_Vehiculo">
+              <MappingFragment StoreEntitySet="Marca_Vehiculo">
+                <ScalarProperty Name="Id_Marca_Vehiculo" ColumnName="Id_Marca_Vehiculo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modelo_Marca_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModelo.Modelo_Marca_Vehiculo">
+              <MappingFragment StoreEntitySet="Modelo_Marca_Vehiculo">
+                <ScalarProperty Name="Id_Modelo_Marca_Vehiculo" ColumnName="Id_Modelo_Marca_Vehiculo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Pais">
+            <EntityTypeMapping TypeName="progra6bdModelo.Pais">
+              <MappingFragment StoreEntitySet="Pais">
+                <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provincias">
+            <EntityTypeMapping TypeName="progra6bdModelo.Provincias">
+              <MappingFragment StoreEntitySet="Provincias">
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="progra6bdModelo.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Servicio_Producto">
+            <EntityTypeMapping TypeName="progra6bdModelo.Tipo_Servicio_Producto">
+              <MappingFragment StoreEntitySet="Tipo_Servicio_Producto">
+                <ScalarProperty Name="Id_Tipo_Servicio_Producto" ColumnName="Id_Tipo_Servicio_Producto" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipo_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModelo.Tipo_Vehiculo">
+              <MappingFragment StoreEntitySet="Tipo_Vehiculo">
+                <ScalarProperty Name="Id_Tipo_Vehiculo" ColumnName="Id_Tipo_Vehiculo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Codigo" ColumnName="Codigo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuario">
+            <EntityTypeMapping TypeName="progra6bdModelo.Usuario">
+              <MappingFragment StoreEntitySet="Usuario">
+                <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Contrasena" ColumnName="Contrasena" />
+                <ScalarProperty Name="Rol" ColumnName="Rol" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModelo.Vehiculo">
+              <MappingFragment StoreEntitySet="Vehiculo">
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Cant_Puertas" ColumnName="Cant_Puertas" />
+                <ScalarProperty Name="Cant_Ruedas" ColumnName="Cant_Ruedas" />
+                <ScalarProperty Name="Anio_Fabricacion" ColumnName="Anio_Fabricacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehiculo_Cliente">
+            <EntityTypeMapping TypeName="progra6bdModelo.Vehiculo_Cliente">
+              <MappingFragment StoreEntitySet="Vehiculo_Cliente">
+                <ScalarProperty Name="Id_Vehiculo_Cliente" ColumnName="Id_Vehiculo_Cliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="Canton_ref_Provincia" TypeName="progra6bdModelo.Canton_ref_Provincia" StoreEntitySet="Cantones">
+            <EndProperty Name="Provincias">
+              <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+            </EndProperty>
+            <EndProperty Name="Cantones">
+              <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="Distrito_ref_Canton" TypeName="progra6bdModelo.Distrito_ref_Canton" StoreEntitySet="Distritos">
+            <EndProperty Name="Cantones">
+              <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+            </EndProperty>
+            <EndProperty Name="Distritos">
+              <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+            </EndProperty>
+            <Condition IsNull="false" ColumnName="id_canton" />
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Cliente_Cantones" TypeName="progra6bdModelo.FK_Cliente_Cantones" StoreEntitySet="Cliente">
+            <EndProperty Name="Cantones">
+              <ScalarProperty Name="id_canton" ColumnName="Id_Canton" />
+            </EndProperty>
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Casa_Fabricante_Vehiculo_Pais" TypeName="progra6bdModelo.FK_Casa_Fabricante_Vehiculo_Pais" StoreEntitySet="Casa_Fabricante_Vehiculo">
+            <EndProperty Name="Pais">
+              <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
+            </EndProperty>
+            <EndProperty Name="Casa_Fabricante_Vehiculo">
+              <ScalarProperty Name="Id_Casa_Fabricante" ColumnName="Id_Casa_Fabricante" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" TypeName="progra6bdModelo.FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" StoreEntitySet="Marca_Vehiculo">
+            <EndProperty Name="Casa_Fabricante_Vehiculo">
+              <ScalarProperty Name="Id_Casa_Fabricante" ColumnName="Id_Casa_Fabricante" />
+            </EndProperty>
+            <EndProperty Name="Marca_Vehiculo">
+              <ScalarProperty Name="Id_Marca_Vehiculo" ColumnName="Id_Marca_Vehiculo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Cliente_Distritos" TypeName="progra6bdModelo.FK_Cliente_Distritos" StoreEntitySet="Cliente">
+            <EndProperty Name="Distritos">
+              <ScalarProperty Name="id_distrito" ColumnName="Id_Distrito" />
+            </EndProperty>
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Cliente_Provincias" TypeName="progra6bdModelo.FK_Cliente_Provincias" StoreEntitySet="Cliente">
+            <EndProperty Name="Provincias">
+              <ScalarProperty Name="id_provincia" ColumnName="Id_Provincia" />
+            </EndProperty>
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Factura_Encabezado_Cliente" TypeName="progra6bdModelo.FK_Factura_Encabezado_Cliente" StoreEntitySet="Factura_Encabezado">
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+            </EndProperty>
+            <EndProperty Name="Factura_Encabezado">
+              <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Vehiculo_Cliente_Cliente" TypeName="progra6bdModelo.FK_Vehiculo_Cliente_Cliente" StoreEntitySet="Vehiculo_Cliente">
+            <EndProperty Name="Cliente">
+              <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+            </EndProperty>
+            <EndProperty Name="Vehiculo_Cliente">
+              <ScalarProperty Name="Id_Vehiculo_Cliente" ColumnName="Id_Vehiculo_Cliente" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Factura_Detalle_Tipo_Servicio_Producto" TypeName="progra6bdModelo.FK_Factura_Detalle_Tipo_Servicio_Producto" StoreEntitySet="Factura_Detalle">
+            <EndProperty Name="Tipo_Servicio_Producto">
+              <ScalarProperty Name="Id_Tipo_Servicio_Producto" ColumnName="Id_Tipo_Servicio_Producto" />
+            </EndProperty>
+            <EndProperty Name="Factura_Detalle">
+              <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" TypeName="progra6bdModelo.FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" StoreEntitySet="Modelo_Marca_Vehiculo">
+            <EndProperty Name="Marca_Vehiculo">
+              <ScalarProperty Name="Id_Marca_Vehiculo" ColumnName="Id_Marca_Vehiculo" />
+            </EndProperty>
+            <EndProperty Name="Modelo_Marca_Vehiculo">
+              <ScalarProperty Name="Id_Modelo_Marca_Vehiculo" ColumnName="Id_Modelo_Marca_Vehiculo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Vehiculo_Modelo_Marca_Vehiculo" TypeName="progra6bdModelo.FK_Vehiculo_Modelo_Marca_Vehiculo" StoreEntitySet="Vehiculo">
+            <EndProperty Name="Modelo_Marca_Vehiculo">
+              <ScalarProperty Name="Id_Modelo_Marca_Vehiculo" ColumnName="Id_Modelo_Marca_Vehiculo" />
+            </EndProperty>
+            <EndProperty Name="Vehiculo">
+              <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Vehiculo_Tipo_Vehiculo" TypeName="progra6bdModelo.FK_Vehiculo_Tipo_Vehiculo" StoreEntitySet="Vehiculo">
+            <EndProperty Name="Tipo_Vehiculo">
+              <ScalarProperty Name="Id_Tipo_Vehiculo" ColumnName="Id_Tipo_Vehiculo" />
+            </EndProperty>
+            <EndProperty Name="Vehiculo">
+              <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Vehiculo_Cliente_Vehiculo" TypeName="progra6bdModelo.FK_Vehiculo_Cliente_Vehiculo" StoreEntitySet="Vehiculo_Cliente">
+            <EndProperty Name="Vehiculo">
+              <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+            </EndProperty>
+            <EndProperty Name="Vehiculo_Cliente">
+              <ScalarProperty Name="Id_Vehiculo_Cliente" ColumnName="Id_Vehiculo_Cliente" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="progra6bdModelo.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="progra6bdModelo.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteCliente" FunctionName="progra6bdModelo.Store.sp_DeleteCliente" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteVehiculo" FunctionName="progra6bdModelo.Store.sp_DeleteVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="progra6bdModelo.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_EliminaCanton" FunctionName="progra6bdModelo.Store.sp_EliminaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="progra6bdModelo.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModelo.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="progra6bdModelo.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModelo.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertaCanton" FunctionName="progra6bdModelo.Store.sp_InsertaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_InsertaDistrito" FunctionName="progra6bdModelo.Store.sp_InsertaDistrito" />
+          <FunctionImportMapping FunctionImportName="sp_InsertCasaFabricanteVehiculo" FunctionName="progra6bdModelo.Store.sp_InsertCasaFabricanteVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_InsertCliente" FunctionName="progra6bdModelo.Store.sp_InsertCliente" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaCanton" FunctionName="progra6bdModelo.Store.sp_ModificaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="progra6bdModelo.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaCantones" FunctionName="progra6bdModelo.Store.sp_RetornaCantones">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModelo.sp_RetornaCantones_Result">
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_canton_inec" ColumnName="id_canton_inec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaCantonesid_canton" FunctionName="progra6bdModelo.Store.sp_RetornaCantonesid_canton">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModelo.sp_RetornaCantonesid_canton_Result">
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_canton_inec" ColumnName="id_canton_inec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaDistritos" FunctionName="progra6bdModelo.Store.sp_RetornaDistritos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModelo.sp_RetornaDistritos_Result">
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_distrito_inec" ColumnName="id_distrito_inec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaProvincias" FunctionName="progra6bdModelo.Store.sp_RetornaProvincias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModelo.sp_RetornaProvincias_Result">
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SelectModeloMarcaVehiculo" FunctionName="progra6bdModelo.Store.sp_SelectModeloMarcaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_SelectVehiculoCliente" FunctionName="progra6bdModelo.Store.sp_SelectVehiculoCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModelo.sp_SelectVehiculoCliente_Result">
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Id_Tipo_Vehiculo" ColumnName="Id_Tipo_Vehiculo" />
+                <ScalarProperty Name="Id_Modelo_Marca_Vehiculo" ColumnName="Id_Modelo_Marca_Vehiculo" />
+                <ScalarProperty Name="Cant_Puertas" ColumnName="Cant_Puertas" />
+                <ScalarProperty Name="Cant_Ruedas" ColumnName="Cant_Ruedas" />
+                <ScalarProperty Name="Anio_Fabricacion" ColumnName="Anio_Fabricacion" />
+                <ScalarProperty Name="Id_Vehiculo_Cliente" ColumnName="Id_Vehiculo_Cliente" />
+                <ScalarProperty Name="Id_Vehiculo1" ColumnName="Id_Vehiculo1" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UpdateCliente" FunctionName="progra6bdModelo.Store.sp_UpdateCliente" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateVehiculo" FunctionName="progra6bdModelo.Store.sp_UpdateVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="progra6bdModelo.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

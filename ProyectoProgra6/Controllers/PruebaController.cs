@@ -9,15 +9,15 @@ namespace ProyectoProgra6.Controllers
     public class PruebaController : Controller
     {
         // GET: Prueba
-        public ActionResult Index()
+        public ActionResult Prueba()
         {
             return View();
         }
 
-        [Httppost]
-        public ActionResult Index()
+        public ActionResult Prueba2()
         {
             return View();
         }
+
     }
 }
