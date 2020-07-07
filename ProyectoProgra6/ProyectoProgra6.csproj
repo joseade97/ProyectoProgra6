@@ -196,6 +196,12 @@
     <Compile Include="Models\sp_RetornaCantones_Result.cs">
       <DependentUpon>ModeloBD.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\sp_RetornaCliente_ID_Result.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\sp_RetornaCliente_Result.cs">
+      <DependentUpon>ModeloBD.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\sp_RetornaDistritos_Result.cs">
       <DependentUpon>ModeloBD.tt</DependentUpon>
     </Compile>

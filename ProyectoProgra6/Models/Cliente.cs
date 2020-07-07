@@ -30,6 +30,8 @@ namespace ProyectoProgra6.Models
         public string Direccion_Fisica { get; set; }
         public int Telefono { get; set; }
         public string Correo_Electronico { get; set; }
+        public string PrimerApellido { get; set; }
+        public string SegundoApellido { get; set; }
     
         public virtual Cantones Cantones { get; set; }
         public virtual Distritos Distritos { get; set; }

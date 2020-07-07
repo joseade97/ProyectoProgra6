@@ -434,5 +434,31 @@ namespace ProyectoProgra6.Models
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
         }
+    
+        public virtual ObjectResult<sp_RetornaCliente_Result> sp_RetornaCliente(string primerApellido, string segundoApellido, string nombre)
+        {
+            var primerApellidoParameter = primerApellido != null ?
+                new ObjectParameter("primerApellido", primerApellido) :
+                new ObjectParameter("primerApellido", typeof(string));
+    
+            var segundoApellidoParameter = segundoApellido != null ?
+                new ObjectParameter("segundoApellido", segundoApellido) :
+                new ObjectParameter("segundoApellido", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_Result>("sp_RetornaCliente", primerApellidoParameter, segundoApellidoParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaCliente_ID_Result> sp_RetornaCliente_ID(Nullable<int> id_Persona)
+        {
+            var id_PersonaParameter = id_Persona.HasValue ?
+                new ObjectParameter("id_Persona", id_Persona) :
+                new ObjectParameter("id_Persona", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_ID_Result>("sp_RetornaCliente_ID", id_PersonaParameter);
+        }
     }
 }

@@ -9,7 +9,7 @@ namespace ProyectoProgra6.Controllers
 {
     public class ClientesController : Controller
     {
-        progra6bdEntities modeloBD = new progra6bdEntities();
+        progra6bdEntities1 modeloBD = new progra6bdEntities1();
         // GET: Clientes
         /// <summary>
         /// Metodo que se invoca al ingresar la direccion el navegador

@@ -9,7 +9,6 @@
     <tr>
         <th>Nombre Completo</th>
         <th>Correo</th>
-        <th>Sexo</th>
         <th>Provincia</th>
         <th>Acciones</th>
     </tr>
@@ -18,14 +17,13 @@
             in this.Model)
         {
             <tr>
-                <td>@posicionModelo.nombre @posicionModelo.primerApellido @posicionModelo.segundoApellido</td>
-                <td>@posicionModelo.correo</td>
-                <td>@posicionModelo.descripcionSexo</td>
+                <td>@posicionModelo.Nombre @posicionModelo.PrimerApellido @posicionModelo.SegundoApellido</td>
+                <td>@posicionModelo.Correo_Electronico</td>
                 <td>@posicionModelo.nombreProvincia</td>
                 <td>
-                    <a href="~/Clientes/ClienteModifica?id_Persona=@posicionModelo.id_Cliente">Modificar</a>
+                    <a href="~/Clientes/ClienteModifica?id_Persona=@posicionModelo.Id_Cliente">Modificar</a>
                     <br />
-                    <a href="~/Clientes/ClienteElimina?id_Persona=@posicionModelo.id_Cliente">Eliminar</a>
+                    <a href="~/Clientes/ClienteElimina?id_Persona=@posicionModelo.Id_Cliente">Eliminar</a>
                 </td>
             </tr>
         }
