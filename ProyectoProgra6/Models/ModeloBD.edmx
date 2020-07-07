@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="progra6bdModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="progra6bdModelo.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
         <EntityType Name="Cantones">
           <Key>
             <PropertyRef Name="id_canton" />
@@ -468,22 +468,22 @@
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <EntityContainer Name="progra6bdModeloStoreContainer">
-          <EntitySet Name="Cantones" EntityType="Self.Cantones" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Casa_Fabricante_Vehiculo" EntityType="Self.Casa_Fabricante_Vehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Distritos" EntityType="Self.Distritos" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Factura_Detalle" EntityType="Self.Factura_Detalle" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Factura_Encabezado" EntityType="Self.Factura_Encabezado" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Marca_Vehiculo" EntityType="Self.Marca_Vehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Modelo_Marca_Vehiculo" EntityType="Self.Modelo_Marca_Vehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tipo_Servicio_Producto" EntityType="Self.Tipo_Servicio_Producto" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Tipo_Vehiculo" EntityType="Self.Tipo_Vehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Vehiculo_Cliente" EntityType="Self.Vehiculo_Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cantones" EntityType="Self.Cantones" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Casa_Fabricante_Vehiculo" EntityType="Self.Casa_Fabricante_Vehiculo" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Distritos" EntityType="Self.Distritos" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Factura_Detalle" EntityType="Self.Factura_Detalle" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Factura_Encabezado" EntityType="Self.Factura_Encabezado" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Marca_Vehiculo" EntityType="Self.Marca_Vehiculo" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Modelo_Marca_Vehiculo" EntityType="Self.Modelo_Marca_Vehiculo" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Pais" EntityType="Self.Pais" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Provincias" EntityType="Self.Provincias" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Tipo_Servicio_Producto" EntityType="Self.Tipo_Servicio_Producto" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Tipo_Vehiculo" EntityType="Self.Tipo_Vehiculo" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Usuario" EntityType="Self.Usuario" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Vehiculo" EntityType="Self.Vehiculo" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="Vehiculo_Cliente" EntityType="Self.Vehiculo_Cliente" Schema="dbo" store:Type="Tables" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
           <AssociationSet Name="Canton_ref_Provincia" Association="Self.Canton_ref_Provincia">
             <End Role="Provincias" EntitySet="Provincias" />
             <End Role="Cantones" EntitySet="Cantones" />
@@ -549,7 +549,7 @@
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="progra6bdModelo" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="progra6bdModelo" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2006/04/edm" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
         <EntityType Name="Cantones">
           <Key>
             <PropertyRef Name="id_canton" />
@@ -1066,7 +1066,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
         <EntityContainerMapping StorageEntityContainer="progra6bdModeloStoreContainer" CdmEntityContainer="progra6bdEntities">
           <EntitySetMapping Name="Cantones">
             <EntityTypeMapping TypeName="progra6bdModelo.Cantones">
@@ -1468,22 +1468,22 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
-        <DesignerProperty Name="UseLegacyProvider" Value="true" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="false" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams />
+  </edmx:Designer>
 </edmx:Edmx>

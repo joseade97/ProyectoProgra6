@@ -1,0 +1,33 @@
+﻿@model List<ProyectoProgra6.Models.sp_RetornaCliente_Result>
+@{
+    ViewBag.Title = "ClientesLista";
+}
+
+<h2>Lista de Clientes</h2>
+<a href="~/Clientes/ClienteNuevo">Agregar Clientes</a>
+<table class="table">
+    <tr>
+        <th>Nombre Completo</th>
+        <th>Correo</th>
+        <th>Sexo</th>
+        <th>Provincia</th>
+        <th>Acciones</th>
+    </tr>
+    @{
+        foreach (ProyectoProgra6.Models.sp_RetornaCliente_Result posicionModelo
+            in this.Model)
+        {
+            <tr>
+                <td>@posicionModelo.nombre @posicionModelo.primerApellido @posicionModelo.segundoApellido</td>
+                <td>@posicionModelo.correo</td>
+                <td>@posicionModelo.descripcionSexo</td>
+                <td>@posicionModelo.nombreProvincia</td>
+                <td>
+                    <a href="~/Clientes/ClienteModifica?id_Persona=@posicionModelo.id_Cliente">Modificar</a>
+                    <br />
+                    <a href="~/Clientes/ClienteElimina?id_Persona=@posicionModelo.id_Cliente">Eliminar</a>
+                </td>
+            </tr>
+        }
+    }
+</table>
