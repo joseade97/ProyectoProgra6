@@ -1,0 +1,19 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+</head>
+<body>
+    <header>Encabezado del sitio web</header>
+    <div>
+        @RenderBody()
+    </div>
+    <footer>Pie de pagina del sitio web @DateTime.Now</footer>
+    @Scripts.Render("~/bundles/bundleJquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

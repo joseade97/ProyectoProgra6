@@ -321,17 +321,13 @@ namespace ProyectoProgra6.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaDistritos_Result>("sp_RetornaDistritos", nombreParameter, id_cantonParameter);
         }
     
-        public virtual ObjectResult<sp_RetornaProvincias_Result> sp_RetornaProvincias(string nombre, Nullable<int> id_provincia)
+        public virtual ObjectResult<sp_RetornaProvincias_Result> sp_RetornaProvincias(string nombre)
         {
             var nombreParameter = nombre != null ?
                 new ObjectParameter("nombre", nombre) :
                 new ObjectParameter("nombre", typeof(string));
     
-            var id_provinciaParameter = id_provincia.HasValue ?
-                new ObjectParameter("id_provincia", id_provincia) :
-                new ObjectParameter("id_provincia", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaProvincias_Result>("sp_RetornaProvincias", nombreParameter, id_provinciaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaProvincias_Result>("sp_RetornaProvincias", nombreParameter);
         }
     
         public virtual ObjectResult<string> sp_SelectModeloMarcaVehiculo(Nullable<int> id_Marca_Vehiculo)
@@ -459,6 +455,51 @@ namespace ProyectoProgra6.Models
                 new ObjectParameter("id_Persona", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_ID_Result>("sp_RetornaCliente_ID", id_PersonaParameter);
+        }
+    
+        public virtual int sp_InsertCliente1(string nombre, string primer_Apellido, string segundo_Apellido, string cedula, Nullable<int> id_Provincia, Nullable<int> id_Canton, Nullable<int> id_Distrito, string direccion_Fisica, Nullable<int> telefono, string correo_Electronico)
+        {
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("Nombre", nombre) :
+                new ObjectParameter("Nombre", typeof(string));
+    
+            var primer_ApellidoParameter = primer_Apellido != null ?
+                new ObjectParameter("Primer_Apellido", primer_Apellido) :
+                new ObjectParameter("Primer_Apellido", typeof(string));
+    
+            var segundo_ApellidoParameter = segundo_Apellido != null ?
+                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
+                new ObjectParameter("Segundo_Apellido", typeof(string));
+    
+            var cedulaParameter = cedula != null ?
+                new ObjectParameter("Cedula", cedula) :
+                new ObjectParameter("Cedula", typeof(string));
+    
+            var id_ProvinciaParameter = id_Provincia.HasValue ?
+                new ObjectParameter("Id_Provincia", id_Provincia) :
+                new ObjectParameter("Id_Provincia", typeof(int));
+    
+            var id_CantonParameter = id_Canton.HasValue ?
+                new ObjectParameter("Id_Canton", id_Canton) :
+                new ObjectParameter("Id_Canton", typeof(int));
+    
+            var id_DistritoParameter = id_Distrito.HasValue ?
+                new ObjectParameter("Id_Distrito", id_Distrito) :
+                new ObjectParameter("Id_Distrito", typeof(int));
+    
+            var direccion_FisicaParameter = direccion_Fisica != null ?
+                new ObjectParameter("Direccion_Fisica", direccion_Fisica) :
+                new ObjectParameter("Direccion_Fisica", typeof(string));
+    
+            var telefonoParameter = telefono.HasValue ?
+                new ObjectParameter("Telefono", telefono) :
+                new ObjectParameter("Telefono", typeof(int));
+    
+            var correo_ElectronicoParameter = correo_Electronico != null ?
+                new ObjectParameter("Correo_Electronico", correo_Electronico) :
+                new ObjectParameter("Correo_Electronico", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCliente1", nombreParameter, primer_ApellidoParameter, segundo_ApellidoParameter, cedulaParameter, id_ProvinciaParameter, id_CantonParameter, id_DistritoParameter, direccion_FisicaParameter, telefonoParameter, correo_ElectronicoParameter);
         }
     }
 }

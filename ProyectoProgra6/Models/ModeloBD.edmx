@@ -405,8 +405,9 @@
           <Parameter Name="Id_Pais" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_InsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="Id_Cliente" Type="int" Mode="In" />
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="Primer_Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Segundo_Apellido" Type="varchar" Mode="In" />
           <Parameter Name="Cedula" Type="varchar" Mode="In" />
           <Parameter Name="Id_Provincia" Type="int" Mode="In" />
           <Parameter Name="Id_Canton" Type="int" Mode="In" />
@@ -447,7 +448,6 @@
         </Function>
         <Function Name="sp_RetornaProvincias" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
-          <Parameter Name="id_provincia" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_SelectModeloMarcaVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Id_Marca_Vehiculo" Type="int" Mode="In" />
@@ -1099,7 +1099,6 @@
           </FunctionImport>
           <FunctionImport Name="sp_RetornaProvincias" ReturnType="Collection(ModeloBD.sp_RetornaProvincias_Result)">
             <Parameter Name="nombre" Mode="In" Type="String" />
-            <Parameter Name="id_provincia" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_SelectModeloMarcaVehiculo" ReturnType="Collection(String)">
           <Parameter Name="Id_Marca_Vehiculo" Mode="In" Type="Int32" />
@@ -1135,7 +1134,19 @@
             <Parameter Name="nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaCliente_ID" ReturnType="Collection(ModeloBD.sp_RetornaCliente_ID_Result)">
-            <Parameter Name="id_Persona" Mode="In" Type="Int32" />
+          <Parameter Name="id_Persona" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_InsertCliente1">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="Primer_Apellido" Mode="In" Type="String" />
+            <Parameter Name="Segundo_Apellido" Mode="In" Type="String" />
+            <Parameter Name="Cedula" Mode="In" Type="String" />
+            <Parameter Name="Id_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Canton" Mode="In" Type="Int32" />
+            <Parameter Name="Id_Distrito" Mode="In" Type="Int32" />
+            <Parameter Name="Direccion_Fisica" Mode="In" Type="String" />
+            <Parameter Name="Telefono" Mode="In" Type="Int32" />
+            <Parameter Name="Correo_Electronico" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
@@ -1450,7 +1461,6 @@
           <FunctionImportMapping FunctionImportName="sp_InsertaCanton" FunctionName="ModeloBD.Store.sp_InsertaCanton" />
           <FunctionImportMapping FunctionImportName="sp_InsertaDistrito" FunctionName="ModeloBD.Store.sp_InsertaDistrito" />
           <FunctionImportMapping FunctionImportName="sp_InsertCasaFabricanteVehiculo" FunctionName="ModeloBD.Store.sp_InsertCasaFabricanteVehiculo" />
-          <FunctionImportMapping FunctionImportName="sp_InsertCliente" FunctionName="ModeloBD.Store.sp_InsertCliente" />
           <FunctionImportMapping FunctionImportName="sp_ModificaCanton" FunctionName="ModeloBD.Store.sp_ModificaCanton" />
           <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ModeloBD.Store.sp_renamediagram" />
           <FunctionImportMapping FunctionImportName="sp_RetornaCantones" FunctionName="ModeloBD.Store.sp_RetornaCantones">
@@ -1567,6 +1577,7 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_InsertCliente1" FunctionName="ModeloBD.Store.sp_InsertCliente" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

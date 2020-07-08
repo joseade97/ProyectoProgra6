@@ -25,6 +25,14 @@ namespace ProyectoProgra6
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/bundles/bundleJquery").Include(
+                "~/Scripts/jquery-3.5.1.js",
+                "~/Scripts/jquery.validate.js",
+                "~/Scripts/ValidacionesGenerales.js",
+                "~/Scripts/bootstrap.js"
+                )
+                );
         }
     }
 }

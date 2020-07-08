@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "ClienteNuevo";
+}
+
+<h2>Agregando un Cliente</h2>
+
+<form id="frmNuevoCliente" method="post">
+    <div class="form-group">
+        <label>Primer Apellido:</label>
+        <input type="text" name="primerApellido" id="primerApellido" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Segundo Apellido:</label>
+        <input type="text" name="segundoApellido" id="segundoApellido" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" id="nombre" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Cedula:</label>
+        <input type="text" name="cedula" id="cedula" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Teléfono :</label>
+        <input type="text" name="telefono" id="telefono" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Correo electrónico</label>
+        <input type="text" name="correo" id="correo" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Dirección Electrónica</label>
+        <input type="text" name="direccion" id="direccion" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label>Provincia:</label>
+        <select name="provincia" id="provincia" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label>Canton:</label>
+        <select name="canton" id="canton" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <label>Distrito:</label>
+        <select name="distrito" id="distrito" class="form-control"></select>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Guardar" id="btnAceptar" />
+    </div>
+
+    <a href="~/Clientes/ClientesLista">Regresar a la lista</a>
+</form>
+@section scripts{
+    <script src="~/Scripts/Geografia/Geografia.js"></script>
+    <script src="~/Scripts/Clientes/ClienteNuevo.js"></script>
+}
