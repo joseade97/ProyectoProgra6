@@ -29,8 +29,7 @@ namespace ProyectoProgra6
             bundles.Add(new ScriptBundle("~/bundles/bundleJquery").Include(
                 "~/Scripts/jquery-3.5.1.js",
                 "~/Scripts/jquery.validate.js",
-                "~/Scripts/ValidacionesGenerales.js",
-                "~/Scripts/bootstrap.js"
+                "~/Scripts/ValidacionesGenerales.js"
                 )
                 );
         }

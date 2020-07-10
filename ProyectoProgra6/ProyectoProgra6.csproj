@@ -394,11 +394,11 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Clientes\ClienteNuevo.cshtml" />
     <Content Include="Views\Shared\_LayoutPersonalizado.cshtml" />
+    <Content Include="Views\Geografia\Geografia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Formularios\" />
-    <Folder Include="Views\Geografia\" />
     <Folder Include="Views\prueba2\" />
     <Folder Include="Views\Prueba\" />
   </ItemGroup>

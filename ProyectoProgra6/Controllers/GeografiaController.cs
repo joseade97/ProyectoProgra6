@@ -27,7 +27,7 @@ namespace ProyectoProgra6.Controllers
         /// <summary>
         /// Retorna todas las provincias
         /// </summary>
-        /// <param name="id_Provincia">id de provincia</param>
+        /// <param name="id_provincia">id de provincia</param>
         /// <returns></returns>
         public ActionResult RetornaCantones(int id_Provincia)
         {
@@ -39,7 +39,7 @@ namespace ProyectoProgra6.Controllers
         /// <summary>
         /// Retorna todas las distritos
         /// </summary>
-        /// <param name="id_Canton">id de canton</param>
+        /// <param name="idcanton">id de canton</param>
         /// <returns></returns>
         public ActionResult RetornaDistritos(int id_Canton)
         {

@@ -1,0 +1,34 @@
+﻿
+@{
+    ViewBag.Title = "Geografia";
+}
+
+<h2>Geografia</h2>
+
+<h2>Ejemplo Jquery Post Listas Anidadas</h2>
+<form id="frmEjemploListasAnidadasPost" method="post">
+
+    <div class="form-group">
+        <label>Provincia:</label>
+        <select name="provincia" id="provincia" class="form-control">
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Cantón:</label>
+        <select name="canton" id="canton" class="form-control"></select>
+    </div>
+
+    <div class="form-group">
+        <label>Distrito:</label>
+        <select name="distrito" id="distrito" class="form-control"></select>
+    </div>
+</form>
+@section scripts{
+    @* *****No es necesario incluir jquery porque
+        ya el layout lo incluye*@
+    <script src="~/Scripts/Geografia/Geografia.js"></script>
+
+}
+
+

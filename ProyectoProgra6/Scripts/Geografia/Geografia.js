@@ -79,7 +79,7 @@ function procesarResultadoProvincias(data) {
         ///por ejemplo provinciaActual.nombre nos retorna el nombre de la provincia
         var provinciaActual = this;
         ///creacion la opcion de la lista, con el valor del id de la provincia y el texto con el nombre
-        nuevaOpcion = "<option value='" + provinciaActual.id_Provincia + "'>" + provinciaActual.nombre + "</option>";
+        nuevaOpcion = "<option value='" + provinciaActual.id_provincia + "'>" + provinciaActual.nombre + "</option>";
         ///agregamos la opcion al dropdownlist
         ddlProvincias.append(nuevaOpcion);
     });
@@ -127,7 +127,7 @@ function procesarResultadoCantones(data) {
         ///por ejemplo cantonActual.nombre nos retorna el nombre del canton
         var cantonActual = this;
         ///creacion la opcion de la lista, con el valor del id del canton y el texto con el nombre
-        nuevaOpcion = "<option value='" + cantonActual.id_Canton + "'>" + cantonActual.nombre + "</option>";
+        nuevaOpcion = "<option value='" + cantonActual.id_canton + "'>" + cantonActual.nombre + "</option>";
         ///agregamos la opcion al dropdownlist
         ddlCantones.append(nuevaOpcion);
     });
@@ -174,7 +174,7 @@ function procesarResultadoDistritos(data) {
         ///por ejemplo distritoActual.nombre nos retorna el nombre del canton
         var distritoActual = this;
         ///creacion la opcion de la lista, con el valor del id del distrito y el texto con el nombre
-        nuevaOpcion = "<option value='" + distritoActual.id_Canton + "'>" + distritoActual.nombre + "</option>";
+        nuevaOpcion = "<option value='" + distritoActual.id_distrito + "'>" + distritoActual.nombre + "</option>";
         ///agregamos la opcion al dropdownlist
         ddlDistritos.append(nuevaOpcion);
     });
