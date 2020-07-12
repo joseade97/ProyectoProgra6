@@ -9,41 +9,41 @@ function creaValidaciones() {
         ///objeto que contiene "las condiciones" que el formulario
         ///debe cumplir para ser considerado válido
         rules: {
-            primerApellido: {
+            PrimerApellido: {
                 required: true,
                 minlength: 3,
                 maxlength: 10
             },
-            segundoApellido: {
+            SegundoApellido: {
                 required: true
             },
-            nombre: {
+            Nombre: {
                 required: true
             },
-            cedula: {
+            Cedula: {
                 required: true,
                 minlength: 9,
                 maxlength: 15
             },
-            correo: {
+            Correo_Electronico: {
                 required: true,
                 email: true
             },
-            telefono: {
+            Telefono: {
                 required: true,
                 maxlength: 12
             },
-            direccion: {
+            Direccion_Fisica: {
                 required: true,
                 maxlength: 150
             },
-            provincia: {
+            id_Provincia: {
                 required: true
             },
-            canton: {
+            Id_Canton: {
                 required: true
             },
-            distrito: {
+            Id_Distrito: {
                 required: true
             },
         }

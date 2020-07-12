@@ -11,24 +11,24 @@
 //cuando se ejecute el método change de las respectivas listas
 function estableceEventosChange() {
     ///Evento change de la lista de provincias
-    $("#provincia").change(function () {
+    $("#id_Provincia").change(function () {
         ///obtenemos el id de la provincia seleccionada
-        var provincia = $("#provincia").val();
+        var provincia = $("#id_Provincia").val();
         ///llamamos a la funcion que nos permite cargar
         ///todos los cantones asociados a la provincia seleccionada
         cargaDropdownListCantones(provincia);
 
         ///Al escoger una provincia nueva, elminamos la seleccion actual del distrito
         ///mediante selector nos posicionamos sobre la lista distritos
-        var ddlDistritos = $("#distrito");
+        var ddlDistritos = $("#Id_Distrito");
         ///limpiamos todas las opciones de la lista de distritos
         ddlDistritos.empty();
     });
 
     ///Evento change de la lista de cantones
-    $("#canton").change(function () {
+    $("#Id_Canton").change(function () {
         ///obtenemos el id de la canton seleccionada
-        var canton = $("#canton").val();
+        var canton = $("#Id_Canton").val();
         ///llamamos a la funcion que nos permite cargar
         ///todos los distritos asociados al canton seleccionado
         cargaDropdownListDistritos(canton);
@@ -65,7 +65,7 @@ function cargaDropdownListProvincias() {
  */
 function procesarResultadoProvincias(data) {
     ///mediante selector nos posicionamos sobre la lista provincias
-    var ddlProvincias = $("#provincia");
+    var ddlProvincias = $("#id_Provincia");
     ///limpiamos todas las opciones de la lista de provincias
     ddlProvincias.empty();
     ///creamos la primera opcion de la lista, con un valor vacio y el texto de "seleccione un valor"
@@ -113,7 +113,7 @@ function cargaDropdownListCantones(pIdProvincia) {
 
 function procesarResultadoCantones(data) {
     ///mediante selector nos posicionamos sobre la lista cantones
-    var ddlCantones = $("#canton");
+    var ddlCantones = $("#Id_Canton");
     ///limpiamos todas las opciones de la lista de cantones
     ddlCantones.empty();
     ///creamos la primera opcion de la lista, con un valor vacio y el texto de "seleccione un valor"
@@ -160,7 +160,7 @@ function cargaDropdownListDistritos(pIdCanton) {
 
 function procesarResultadoDistritos(data) {
     ///mediante selector nos posicionamos sobre la lista distritos
-    var ddlDistritos = $("#distrito");
+    var ddlDistritos = $("#Id_Distrito");
     ///limpiamos todas las opciones de la lista de distritos
     ddlDistritos.empty();
     ///creamos la primera opcion de la lista, con un valor vacio y el texto de "seleccione un valor"
