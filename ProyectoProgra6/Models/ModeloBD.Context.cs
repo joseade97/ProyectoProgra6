@@ -15,10 +15,10 @@ namespace ProyectoProgra6.Models
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class progra6bdEntities1 : DbContext
+    public partial class progra6bdEntities : DbContext
     {
-        public progra6bdEntities1()
-            : base("name=progra6bdEntities1")
+        public progra6bdEntities()
+            : base("name=progra6bdEntities")
         {
         }
     
@@ -207,12 +207,8 @@ namespace ProyectoProgra6.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCasaFabricanteVehiculo", id_Casa_FabricanteParameter, nombreParameter, codigoParameter, id_PaisParameter);
         }
     
-        public virtual int sp_InsertCliente(Nullable<int> id_Cliente, string nombre, string cedula, Nullable<int> id_Provincia, Nullable<int> id_Canton, Nullable<int> id_Distrito, string direccion_Fisica, Nullable<int> telefono, string correo_Electronico)
+        public virtual int sp_InsertCliente(string nombre, string cedula, Nullable<int> id_Provincia, Nullable<int> id_Canton, Nullable<int> id_Distrito, string direccion_Fisica, Nullable<int> telefono, string correo_Electronico, string primer_Apellido, string segundo_Apellido)
         {
-            var id_ClienteParameter = id_Cliente.HasValue ?
-                new ObjectParameter("Id_Cliente", id_Cliente) :
-                new ObjectParameter("Id_Cliente", typeof(int));
-    
             var nombreParameter = nombre != null ?
                 new ObjectParameter("Nombre", nombre) :
                 new ObjectParameter("Nombre", typeof(string));
@@ -245,7 +241,15 @@ namespace ProyectoProgra6.Models
                 new ObjectParameter("Correo_Electronico", correo_Electronico) :
                 new ObjectParameter("Correo_Electronico", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCliente", id_ClienteParameter, nombreParameter, cedulaParameter, id_ProvinciaParameter, id_CantonParameter, id_DistritoParameter, direccion_FisicaParameter, telefonoParameter, correo_ElectronicoParameter);
+            var primer_ApellidoParameter = primer_Apellido != null ?
+                new ObjectParameter("Primer_Apellido", primer_Apellido) :
+                new ObjectParameter("Primer_Apellido", typeof(string));
+    
+            var segundo_ApellidoParameter = segundo_Apellido != null ?
+                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
+                new ObjectParameter("Segundo_Apellido", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCliente", nombreParameter, cedulaParameter, id_ProvinciaParameter, id_CantonParameter, id_DistritoParameter, direccion_FisicaParameter, telefonoParameter, correo_ElectronicoParameter, primer_ApellidoParameter, segundo_ApellidoParameter);
         }
     
         public virtual int sp_ModificaCanton(Nullable<int> id_canton, Nullable<int> id_provincia, string nombre, Nullable<int> id_canton_inec)
@@ -306,6 +310,32 @@ namespace ProyectoProgra6.Models
                 new ObjectParameter("id_canton", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCantonesid_canton_Result>("sp_RetornaCantonesid_canton", id_cantonParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaCliente_Result> sp_RetornaCliente(string primerApellido, string segundoApellido, string nombre)
+        {
+            var primerApellidoParameter = primerApellido != null ?
+                new ObjectParameter("primerApellido", primerApellido) :
+                new ObjectParameter("primerApellido", typeof(string));
+    
+            var segundoApellidoParameter = segundoApellido != null ?
+                new ObjectParameter("segundoApellido", segundoApellido) :
+                new ObjectParameter("segundoApellido", typeof(string));
+    
+            var nombreParameter = nombre != null ?
+                new ObjectParameter("nombre", nombre) :
+                new ObjectParameter("nombre", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_Result>("sp_RetornaCliente", primerApellidoParameter, segundoApellidoParameter, nombreParameter);
+        }
+    
+        public virtual ObjectResult<sp_RetornaCliente_ID_Result> sp_RetornaCliente_ID(Nullable<int> id_Persona)
+        {
+            var id_PersonaParameter = id_Persona.HasValue ?
+                new ObjectParameter("id_Persona", id_Persona) :
+                new ObjectParameter("id_Persona", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_ID_Result>("sp_RetornaCliente_ID", id_PersonaParameter);
         }
     
         public virtual ObjectResult<sp_RetornaDistritos_Result> sp_RetornaDistritos(string nombre, Nullable<int> id_canton)
@@ -429,77 +459,6 @@ namespace ProyectoProgra6.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
-        }
-    
-        public virtual ObjectResult<sp_RetornaCliente_Result> sp_RetornaCliente(string primerApellido, string segundoApellido, string nombre)
-        {
-            var primerApellidoParameter = primerApellido != null ?
-                new ObjectParameter("primerApellido", primerApellido) :
-                new ObjectParameter("primerApellido", typeof(string));
-    
-            var segundoApellidoParameter = segundoApellido != null ?
-                new ObjectParameter("segundoApellido", segundoApellido) :
-                new ObjectParameter("segundoApellido", typeof(string));
-    
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("nombre", nombre) :
-                new ObjectParameter("nombre", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_Result>("sp_RetornaCliente", primerApellidoParameter, segundoApellidoParameter, nombreParameter);
-        }
-    
-        public virtual ObjectResult<sp_RetornaCliente_ID_Result> sp_RetornaCliente_ID(Nullable<int> id_Persona)
-        {
-            var id_PersonaParameter = id_Persona.HasValue ?
-                new ObjectParameter("id_Persona", id_Persona) :
-                new ObjectParameter("id_Persona", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_ID_Result>("sp_RetornaCliente_ID", id_PersonaParameter);
-        }
-    
-        public virtual int sp_InsertCliente1(string nombre, string primer_Apellido, string segundo_Apellido, string cedula, Nullable<int> id_Provincia, Nullable<int> id_Canton, Nullable<int> id_Distrito, string direccion_Fisica, Nullable<int> telefono, string correo_Electronico)
-        {
-            var nombreParameter = nombre != null ?
-                new ObjectParameter("Nombre", nombre) :
-                new ObjectParameter("Nombre", typeof(string));
-    
-            var primer_ApellidoParameter = primer_Apellido != null ?
-                new ObjectParameter("Primer_Apellido", primer_Apellido) :
-                new ObjectParameter("Primer_Apellido", typeof(string));
-    
-            var segundo_ApellidoParameter = segundo_Apellido != null ?
-                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
-                new ObjectParameter("Segundo_Apellido", typeof(string));
-    
-            var cedulaParameter = cedula != null ?
-                new ObjectParameter("Cedula", cedula) :
-                new ObjectParameter("Cedula", typeof(string));
-    
-            var id_ProvinciaParameter = id_Provincia.HasValue ?
-                new ObjectParameter("Id_Provincia", id_Provincia) :
-                new ObjectParameter("Id_Provincia", typeof(int));
-    
-            var id_CantonParameter = id_Canton.HasValue ?
-                new ObjectParameter("Id_Canton", id_Canton) :
-                new ObjectParameter("Id_Canton", typeof(int));
-    
-            var id_DistritoParameter = id_Distrito.HasValue ?
-                new ObjectParameter("Id_Distrito", id_Distrito) :
-                new ObjectParameter("Id_Distrito", typeof(int));
-    
-            var direccion_FisicaParameter = direccion_Fisica != null ?
-                new ObjectParameter("Direccion_Fisica", direccion_Fisica) :
-                new ObjectParameter("Direccion_Fisica", typeof(string));
-    
-            var telefonoParameter = telefono.HasValue ?
-                new ObjectParameter("Telefono", telefono) :
-                new ObjectParameter("Telefono", typeof(int));
-    
-            var correo_ElectronicoParameter = correo_Electronico != null ?
-                new ObjectParameter("Correo_Electronico", correo_Electronico) :
-                new ObjectParameter("Correo_Electronico", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertCliente1", nombreParameter, primer_ApellidoParameter, segundo_ApellidoParameter, cedulaParameter, id_ProvinciaParameter, id_CantonParameter, id_DistritoParameter, direccion_FisicaParameter, telefonoParameter, correo_ElectronicoParameter);
         }
     }
 }

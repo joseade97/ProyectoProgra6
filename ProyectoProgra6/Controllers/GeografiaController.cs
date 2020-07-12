@@ -9,7 +9,7 @@ namespace ProyectoProgra6.Controllers
 {
     public class GeografiaController : Controller
     {
-        progra6bdEntities1 modeloBD = new progra6bdEntities1();
+        progra6bdEntities modeloBD = new progra6bdEntities();
 
         // GET: Geografia
         public ActionResult Geografia()

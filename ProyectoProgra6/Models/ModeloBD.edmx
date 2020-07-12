@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="ModeloBD.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="progra6bdModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Cantones">
           <Key>
             <PropertyRef Name="id_canton" />
@@ -35,7 +35,7 @@
           <Property Name="Id_Cliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Cedula" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="Id_Provincia" Type="int" Nullable="false" />
+          <Property Name="id_Provincia" Type="int" Nullable="false" />
           <Property Name="Id_Canton" Type="int" Nullable="false" />
           <Property Name="Id_Distrito" Type="int" Nullable="false" />
           <Property Name="Direccion_Fisica" Type="varchar" MaxLength="100" Nullable="false" />
@@ -242,7 +242,7 @@
               <PropertyRef Name="id_provincia" />
             </Principal>
             <Dependent Role="Cliente">
-              <PropertyRef Name="Id_Provincia" />
+              <PropertyRef Name="id_Provincia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -406,8 +406,6 @@
         </Function>
         <Function Name="sp_InsertCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="Nombre" Type="varchar" Mode="In" />
-          <Parameter Name="Primer_Apellido" Type="varchar" Mode="In" />
-          <Parameter Name="Segundo_Apellido" Type="varchar" Mode="In" />
           <Parameter Name="Cedula" Type="varchar" Mode="In" />
           <Parameter Name="Id_Provincia" Type="int" Mode="In" />
           <Parameter Name="Id_Canton" Type="int" Mode="In" />
@@ -415,6 +413,8 @@
           <Parameter Name="Direccion_Fisica" Type="varchar" Mode="In" />
           <Parameter Name="Telefono" Type="int" Mode="In" />
           <Parameter Name="Correo_Electronico" Type="varchar" Mode="In" />
+          <Parameter Name="Primer_Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Segundo_Apellido" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_ModificaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_canton" Type="int" Mode="In" />
@@ -477,7 +477,7 @@
           <Parameter Name="Anio_Fabricacion" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="ModeloBDStoreContainer">
+        <EntityContainer Name="progra6bdModelStoreContainer">
           <EntitySet Name="Cantones" EntityType="Self.Cantones" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Casa_Fabricante_Vehiculo" EntityType="Self.Casa_Fabricante_Vehiculo" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
@@ -558,7 +558,7 @@
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="ModeloBD" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="progra6bdModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Cantones">
           <Key>
             <PropertyRef Name="id_canton" />
@@ -594,19 +594,19 @@
           <Property Name="Id_Cliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cedula" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Id_Provincia" Type="Int32" Nullable="false" />
+          <Property Name="id_Provincia" Type="Int32" Nullable="false" />
           <Property Name="Id_Canton" Type="Int32" Nullable="false" />
           <Property Name="Id_Distrito" Type="Int32" Nullable="false" />
           <Property Name="Direccion_Fisica" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Telefono" Type="Int32" Nullable="false" />
           <Property Name="Correo_Electronico" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PrimerApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Cantones" Relationship="Self.FK_Cliente_Cantones" FromRole="Cliente" ToRole="Cantones" />
           <NavigationProperty Name="Distritos" Relationship="Self.FK_Cliente_Distritos" FromRole="Cliente" ToRole="Distritos" />
           <NavigationProperty Name="Provincias" Relationship="Self.FK_Cliente_Provincias" FromRole="Cliente" ToRole="Provincias" />
           <NavigationProperty Name="Factura_Encabezado" Relationship="Self.FK_Factura_Encabezado_Cliente" FromRole="Cliente" ToRole="Factura_Encabezado" />
           <NavigationProperty Name="Vehiculo_Cliente" Relationship="Self.FK_Vehiculo_Cliente_Cliente" FromRole="Cliente" ToRole="Vehiculo_Cliente" />
-          <Property Name="PrimerApellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="SegundoApellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Distritos">
           <Key>
@@ -838,7 +838,7 @@
               <PropertyRef Name="id_provincia" />
             </Principal>
             <Dependent Role="Cliente">
-              <PropertyRef Name="Id_Provincia" />
+              <PropertyRef Name="id_Provincia" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -938,7 +938,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="progra6bdEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="progra6bdEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Cantones" EntityType="Self.Cantones" />
           <EntitySet Name="Casa_Fabricante_Vehiculo" EntityType="Self.Casa_Fabricante_Vehiculo" />
           <EntitySet Name="Cliente" EntityType="Self.Cliente" />
@@ -1040,11 +1040,11 @@
           <FunctionImport Name="sp_EliminaCanton">
           <Parameter Name="id_canton" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ModeloBD.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(progra6bdModel.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ModeloBD.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(progra6bdModel.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1065,7 +1065,6 @@
             <Parameter Name="Id_Pais" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_InsertCliente">
-            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
             <Parameter Name="Nombre" Mode="In" Type="String" />
             <Parameter Name="Cedula" Mode="In" Type="String" />
             <Parameter Name="Id_Provincia" Mode="In" Type="Int32" />
@@ -1074,6 +1073,8 @@
             <Parameter Name="Direccion_Fisica" Mode="In" Type="String" />
             <Parameter Name="Telefono" Mode="In" Type="Int32" />
             <Parameter Name="Correo_Electronico" Mode="In" Type="String" />
+            <Parameter Name="Primer_Apellido" Mode="In" Type="String" />
+            <Parameter Name="Segundo_Apellido" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_ModificaCanton">
             <Parameter Name="id_canton" Mode="In" Type="Int32" />
@@ -1086,24 +1087,32 @@
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
             <Parameter Name="new_diagramname" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="sp_RetornaCantones" ReturnType="Collection(ModeloBD.sp_RetornaCantones_Result)">
+          <FunctionImport Name="sp_RetornaCantones" ReturnType="Collection(progra6bdModel.sp_RetornaCantones_Result)">
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="id_provincia" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_RetornaCantonesid_canton" ReturnType="Collection(ModeloBD.sp_RetornaCantonesid_canton_Result)">
+          <FunctionImport Name="sp_RetornaCantonesid_canton" ReturnType="Collection(progra6bdModel.sp_RetornaCantonesid_canton_Result)">
           <Parameter Name="id_canton" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_RetornaDistritos" ReturnType="Collection(ModeloBD.sp_RetornaDistritos_Result)">
+          <FunctionImport Name="sp_RetornaCliente" ReturnType="Collection(progra6bdModel.sp_RetornaCliente_Result)">
+            <Parameter Name="primerApellido" Mode="In" Type="String" />
+            <Parameter Name="segundoApellido" Mode="In" Type="String" />
+            <Parameter Name="nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaCliente_ID" ReturnType="Collection(progra6bdModel.sp_RetornaCliente_ID_Result)">
+          <Parameter Name="id_Persona" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_RetornaDistritos" ReturnType="Collection(progra6bdModel.sp_RetornaDistritos_Result)">
             <Parameter Name="nombre" Mode="In" Type="String" />
             <Parameter Name="id_canton" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_RetornaProvincias" ReturnType="Collection(ModeloBD.sp_RetornaProvincias_Result)">
-            <Parameter Name="nombre" Mode="In" Type="String" />
+          <FunctionImport Name="sp_RetornaProvincias" ReturnType="Collection(progra6bdModel.sp_RetornaProvincias_Result)">
+          <Parameter Name="nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_SelectModeloMarcaVehiculo" ReturnType="Collection(String)">
           <Parameter Name="Id_Marca_Vehiculo" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_SelectVehiculoCliente" ReturnType="Collection(ModeloBD.sp_SelectVehiculoCliente_Result)">
+          <FunctionImport Name="sp_SelectVehiculoCliente" ReturnType="Collection(progra6bdModel.sp_SelectVehiculoCliente_Result)">
           <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_UpdateCliente">
@@ -1128,26 +1137,6 @@
             <Parameter Name="Anio_Fabricacion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
-          <FunctionImport Name="sp_RetornaCliente" ReturnType="Collection(ModeloBD.sp_RetornaCliente_Result)">
-            <Parameter Name="primerApellido" Mode="In" Type="String" />
-            <Parameter Name="segundoApellido" Mode="In" Type="String" />
-            <Parameter Name="nombre" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_RetornaCliente_ID" ReturnType="Collection(ModeloBD.sp_RetornaCliente_ID_Result)">
-          <Parameter Name="id_Persona" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_InsertCliente1">
-            <Parameter Name="Nombre" Mode="In" Type="String" />
-            <Parameter Name="Primer_Apellido" Mode="In" Type="String" />
-            <Parameter Name="Segundo_Apellido" Mode="In" Type="String" />
-            <Parameter Name="Cedula" Mode="In" Type="String" />
-            <Parameter Name="Id_Provincia" Mode="In" Type="Int32" />
-            <Parameter Name="Id_Canton" Mode="In" Type="Int32" />
-            <Parameter Name="Id_Distrito" Mode="In" Type="Int32" />
-            <Parameter Name="Direccion_Fisica" Mode="In" Type="String" />
-            <Parameter Name="Telefono" Mode="In" Type="Int32" />
-            <Parameter Name="Correo_Electronico" Mode="In" Type="String" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1184,6 +1173,30 @@
           <Property Type="String" Name="vc_estado" Nullable="true" MaxLength="3" />
           <Property Type="Int32" Name="id_canton_inec" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="sp_RetornaCliente_Result">
+          <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="String" Name="nombreProvincia" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="Id_Distrito" Nullable="false" />
+          <Property Type="String" Name="Direccion_Fisica" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Telefono" Nullable="false" />
+          <Property Type="String" Name="Correo_Electronico" Nullable="false" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="sp_RetornaCliente_ID_Result">
+          <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
+          <Property Type="String" Name="primerApellido" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="telefono" Nullable="false" />
+          <Property Type="String" Name="Correo_Electronico" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="String" Name="nombreProvincia" Nullable="false" MaxLength="100" />
+        </ComplexType>
         <ComplexType Name="sp_RetornaDistritos_Result">
           <Property Type="Int32" Name="id_distrito" Nullable="false" />
           <Property Type="Int32" Name="id_canton" Nullable="false" />
@@ -1218,38 +1231,14 @@
           <Property Type="Int32" Name="Id_Vehiculo1" Nullable="false" />
           <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="sp_RetornaCliente_Result">
-          <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
-          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="PrimerApellido" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="SegundoApellido" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
-          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
-          <Property Type="String" Name="nombreProvincia" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="Id_Canton" Nullable="false" />
-          <Property Type="Int32" Name="Id_Distrito" Nullable="false" />
-          <Property Type="String" Name="Direccion_Fisica" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="Telefono" Nullable="false" />
-          <Property Type="String" Name="Correo_Electronico" Nullable="false" MaxLength="50" />
-        </ComplexType>
-        <ComplexType Name="sp_RetornaCliente_ID_Result">
-          <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
-          <Property Type="String" Name="primerApellido" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="telefono" Nullable="false" />
-          <Property Type="String" Name="Correo_Electronico" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
-          <Property Type="String" Name="nombreProvincia" Nullable="false" MaxLength="100" />
-        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ModeloBDStoreContainer" CdmEntityContainer="progra6bdEntities1">
+        <EntityContainerMapping StorageEntityContainer="progra6bdModelStoreContainer" CdmEntityContainer="progra6bdEntities">
           <EntitySetMapping Name="Cantones">
-            <EntityTypeMapping TypeName="ModeloBD.Cantones">
+            <EntityTypeMapping TypeName="progra6bdModel.Cantones">
               <MappingFragment StoreEntitySet="Cantones">
                 <ScalarProperty Name="id_canton" ColumnName="id_canton" />
                 <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
@@ -1264,7 +1253,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Casa_Fabricante_Vehiculo">
-            <EntityTypeMapping TypeName="ModeloBD.Casa_Fabricante_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModel.Casa_Fabricante_Vehiculo">
               <MappingFragment StoreEntitySet="Casa_Fabricante_Vehiculo">
                 <ScalarProperty Name="Id_Casa_Fabricante" ColumnName="Id_Casa_Fabricante" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1274,24 +1263,24 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Cliente">
-            <EntityTypeMapping TypeName="ModeloBD.Cliente">
+            <EntityTypeMapping TypeName="progra6bdModel.Cliente">
               <MappingFragment StoreEntitySet="Cliente">
-                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
-                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
                 <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="Cedula" ColumnName="Cedula" />
-                <ScalarProperty Name="Id_Provincia" ColumnName="Id_Provincia" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
                 <ScalarProperty Name="Id_Canton" ColumnName="Id_Canton" />
                 <ScalarProperty Name="Id_Distrito" ColumnName="Id_Distrito" />
                 <ScalarProperty Name="Direccion_Fisica" ColumnName="Direccion_Fisica" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
+                <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
+                <ScalarProperty Name="SegundoApellido" ColumnName="SegundoApellido" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Distritos">
-            <EntityTypeMapping TypeName="ModeloBD.Distritos">
+            <EntityTypeMapping TypeName="progra6bdModel.Distritos">
               <MappingFragment StoreEntitySet="Distritos">
                 <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
                 <ScalarProperty Name="id_canton" ColumnName="id_canton" />
@@ -1306,7 +1295,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Factura_Detalle">
-            <EntityTypeMapping TypeName="ModeloBD.Factura_Detalle">
+            <EntityTypeMapping TypeName="progra6bdModel.Factura_Detalle">
               <MappingFragment StoreEntitySet="Factura_Detalle">
                 <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
                 <ScalarProperty Name="Num_Linea" ColumnName="Num_Linea" />
@@ -1318,7 +1307,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Factura_Encabezado">
-            <EntityTypeMapping TypeName="ModeloBD.Factura_Encabezado">
+            <EntityTypeMapping TypeName="progra6bdModel.Factura_Encabezado">
               <MappingFragment StoreEntitySet="Factura_Encabezado">
                 <ScalarProperty Name="Num_Factura" ColumnName="Num_Factura" />
                 <ScalarProperty Name="Fecha_Factura" ColumnName="Fecha_Factura" />
@@ -1328,7 +1317,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Marca_Vehiculo">
-            <EntityTypeMapping TypeName="ModeloBD.Marca_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModel.Marca_Vehiculo">
               <MappingFragment StoreEntitySet="Marca_Vehiculo">
                 <ScalarProperty Name="Id_Marca_Vehiculo" ColumnName="Id_Marca_Vehiculo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1338,7 +1327,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Modelo_Marca_Vehiculo">
-            <EntityTypeMapping TypeName="ModeloBD.Modelo_Marca_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModel.Modelo_Marca_Vehiculo">
               <MappingFragment StoreEntitySet="Modelo_Marca_Vehiculo">
                 <ScalarProperty Name="Id_Modelo_Marca_Vehiculo" ColumnName="Id_Modelo_Marca_Vehiculo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1348,7 +1337,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Pais">
-            <EntityTypeMapping TypeName="ModeloBD.Pais">
+            <EntityTypeMapping TypeName="progra6bdModel.Pais">
               <MappingFragment StoreEntitySet="Pais">
                 <ScalarProperty Name="Id_Pais" ColumnName="Id_Pais" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1357,7 +1346,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provincias">
-            <EntityTypeMapping TypeName="ModeloBD.Provincias">
+            <EntityTypeMapping TypeName="progra6bdModel.Provincias">
               <MappingFragment StoreEntitySet="Provincias">
                 <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1370,7 +1359,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="ModeloBD.sysdiagrams">
+            <EntityTypeMapping TypeName="progra6bdModel.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -1381,7 +1370,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tipo_Servicio_Producto">
-            <EntityTypeMapping TypeName="ModeloBD.Tipo_Servicio_Producto">
+            <EntityTypeMapping TypeName="progra6bdModel.Tipo_Servicio_Producto">
               <MappingFragment StoreEntitySet="Tipo_Servicio_Producto">
                 <ScalarProperty Name="Id_Tipo_Servicio_Producto" ColumnName="Id_Tipo_Servicio_Producto" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1391,7 +1380,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Tipo_Vehiculo">
-            <EntityTypeMapping TypeName="ModeloBD.Tipo_Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModel.Tipo_Vehiculo">
               <MappingFragment StoreEntitySet="Tipo_Vehiculo">
                 <ScalarProperty Name="Id_Tipo_Vehiculo" ColumnName="Id_Tipo_Vehiculo" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1400,7 +1389,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="ModeloBD.Usuario">
+            <EntityTypeMapping TypeName="progra6bdModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="Id_Usuario" ColumnName="Id_Usuario" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
@@ -1411,7 +1400,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vehiculo">
-            <EntityTypeMapping TypeName="ModeloBD.Vehiculo">
+            <EntityTypeMapping TypeName="progra6bdModel.Vehiculo">
               <MappingFragment StoreEntitySet="Vehiculo">
                 <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
                 <ScalarProperty Name="Placa" ColumnName="Placa" />
@@ -1425,7 +1414,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Vehiculo_Cliente">
-            <EntityTypeMapping TypeName="ModeloBD.Vehiculo_Cliente">
+            <EntityTypeMapping TypeName="progra6bdModel.Vehiculo_Cliente">
               <MappingFragment StoreEntitySet="Vehiculo_Cliente">
                 <ScalarProperty Name="Id_Vehiculo_Cliente" ColumnName="Id_Vehiculo_Cliente" />
                 <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
@@ -1433,23 +1422,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ModeloBD.Store.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ModeloBD.Store.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteCliente" FunctionName="ModeloBD.Store.sp_DeleteCliente" />
-          <FunctionImportMapping FunctionImportName="sp_DeleteVehiculo" FunctionName="ModeloBD.Store.sp_DeleteVehiculo" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ModeloBD.Store.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_EliminaCanton" FunctionName="ModeloBD.Store.sp_EliminaCanton" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ModeloBD.Store.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="progra6bdModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="progra6bdModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteCliente" FunctionName="progra6bdModel.Store.sp_DeleteCliente" />
+          <FunctionImportMapping FunctionImportName="sp_DeleteVehiculo" FunctionName="progra6bdModel.Store.sp_DeleteVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="progra6bdModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_EliminaCanton" FunctionName="progra6bdModel.Store.sp_EliminaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="progra6bdModel.Store.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ModeloBD.Store.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="progra6bdModel.Store.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -1458,14 +1447,15 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_InsertaCanton" FunctionName="ModeloBD.Store.sp_InsertaCanton" />
-          <FunctionImportMapping FunctionImportName="sp_InsertaDistrito" FunctionName="ModeloBD.Store.sp_InsertaDistrito" />
-          <FunctionImportMapping FunctionImportName="sp_InsertCasaFabricanteVehiculo" FunctionName="ModeloBD.Store.sp_InsertCasaFabricanteVehiculo" />
-          <FunctionImportMapping FunctionImportName="sp_ModificaCanton" FunctionName="ModeloBD.Store.sp_ModificaCanton" />
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ModeloBD.Store.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_RetornaCantones" FunctionName="ModeloBD.Store.sp_RetornaCantones">
+          <FunctionImportMapping FunctionImportName="sp_InsertaCanton" FunctionName="progra6bdModel.Store.sp_InsertaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_InsertaDistrito" FunctionName="progra6bdModel.Store.sp_InsertaDistrito" />
+          <FunctionImportMapping FunctionImportName="sp_InsertCasaFabricanteVehiculo" FunctionName="progra6bdModel.Store.sp_InsertCasaFabricanteVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_InsertCliente" FunctionName="progra6bdModel.Store.sp_InsertCliente" />
+          <FunctionImportMapping FunctionImportName="sp_ModificaCanton" FunctionName="progra6bdModel.Store.sp_ModificaCanton" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="progra6bdModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaCantones" FunctionName="progra6bdModel.Store.sp_RetornaCantones">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_RetornaCantones_Result">
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_RetornaCantones_Result">
                 <ScalarProperty Name="id_canton" ColumnName="id_canton" />
                 <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1479,9 +1469,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_RetornaCantonesid_canton" FunctionName="ModeloBD.Store.sp_RetornaCantonesid_canton">
+          <FunctionImportMapping FunctionImportName="sp_RetornaCantonesid_canton" FunctionName="progra6bdModel.Store.sp_RetornaCantonesid_canton">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_RetornaCantonesid_canton_Result">
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_RetornaCantonesid_canton_Result">
                 <ScalarProperty Name="id_canton" ColumnName="id_canton" />
                 <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -1495,59 +1485,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_RetornaDistritos" FunctionName="ModeloBD.Store.sp_RetornaDistritos">
+          <FunctionImportMapping FunctionImportName="sp_RetornaCliente" FunctionName="progra6bdModel.Store.sp_RetornaCliente">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_RetornaDistritos_Result">
-                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
-                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="Canton" ColumnName="Canton" />
-                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
-                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
-                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
-                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
-                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
-                <ScalarProperty Name="id_distrito_inec" ColumnName="id_distrito_inec" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_RetornaProvincias" FunctionName="ModeloBD.Store.sp_RetornaProvincias">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_RetornaProvincias_Result">
-                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
-                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
-                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
-                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
-                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_SelectModeloMarcaVehiculo" FunctionName="ModeloBD.Store.sp_SelectModeloMarcaVehiculo" />
-          <FunctionImportMapping FunctionImportName="sp_SelectVehiculoCliente" FunctionName="ModeloBD.Store.sp_SelectVehiculoCliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_SelectVehiculoCliente_Result">
-                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
-                <ScalarProperty Name="Placa" ColumnName="Placa" />
-                <ScalarProperty Name="Marca" ColumnName="Marca" />
-                <ScalarProperty Name="Id_Tipo_Vehiculo" ColumnName="Id_Tipo_Vehiculo" />
-                <ScalarProperty Name="Id_Modelo_Marca_Vehiculo" ColumnName="Id_Modelo_Marca_Vehiculo" />
-                <ScalarProperty Name="Cant_Puertas" ColumnName="Cant_Puertas" />
-                <ScalarProperty Name="Cant_Ruedas" ColumnName="Cant_Ruedas" />
-                <ScalarProperty Name="Anio_Fabricacion" ColumnName="Anio_Fabricacion" />
-                <ScalarProperty Name="Id_Vehiculo_Cliente" ColumnName="Id_Vehiculo_Cliente" />
-                <ScalarProperty Name="Id_Vehiculo1" ColumnName="Id_Vehiculo1" />
-                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_UpdateCliente" FunctionName="ModeloBD.Store.sp_UpdateCliente" />
-          <FunctionImportMapping FunctionImportName="sp_UpdateVehiculo" FunctionName="ModeloBD.Store.sp_UpdateVehiculo" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ModeloBD.Store.sp_upgraddiagrams" />
-          <FunctionImportMapping FunctionImportName="sp_RetornaCliente" FunctionName="ModeloBD.Store.sp_RetornaCliente">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_RetornaCliente_Result">
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_RetornaCliente_Result">
                 <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="PrimerApellido" ColumnName="PrimerApellido" />
@@ -1563,9 +1503,9 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_RetornaCliente_ID" FunctionName="ModeloBD.Store.sp_RetornaCliente_ID">
+          <FunctionImportMapping FunctionImportName="sp_RetornaCliente_ID" FunctionName="progra6bdModel.Store.sp_RetornaCliente_ID">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ModeloBD.sp_RetornaCliente_ID_Result">
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_RetornaCliente_ID_Result">
                 <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
                 <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
                 <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
@@ -1577,7 +1517,56 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_InsertCliente1" FunctionName="ModeloBD.Store.sp_InsertCliente" />
+          <FunctionImportMapping FunctionImportName="sp_RetornaDistritos" FunctionName="progra6bdModel.Store.sp_RetornaDistritos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_RetornaDistritos_Result">
+                <ScalarProperty Name="id_distrito" ColumnName="id_distrito" />
+                <ScalarProperty Name="id_canton" ColumnName="id_canton" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Canton" ColumnName="Canton" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+                <ScalarProperty Name="id_distrito_inec" ColumnName="id_distrito_inec" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_RetornaProvincias" FunctionName="progra6bdModel.Store.sp_RetornaProvincias">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_RetornaProvincias_Result">
+                <ScalarProperty Name="id_provincia" ColumnName="id_provincia" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="usuario_creacion" ColumnName="usuario_creacion" />
+                <ScalarProperty Name="fecha_creacion" ColumnName="fecha_creacion" />
+                <ScalarProperty Name="usuario_modificacion" ColumnName="usuario_modificacion" />
+                <ScalarProperty Name="fecha_ult_mod" ColumnName="fecha_ult_mod" />
+                <ScalarProperty Name="vc_estado" ColumnName="vc_estado" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_SelectModeloMarcaVehiculo" FunctionName="progra6bdModel.Store.sp_SelectModeloMarcaVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_SelectVehiculoCliente" FunctionName="progra6bdModel.Store.sp_SelectVehiculoCliente">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="progra6bdModel.sp_SelectVehiculoCliente_Result">
+                <ScalarProperty Name="Id_Vehiculo" ColumnName="Id_Vehiculo" />
+                <ScalarProperty Name="Placa" ColumnName="Placa" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Id_Tipo_Vehiculo" ColumnName="Id_Tipo_Vehiculo" />
+                <ScalarProperty Name="Id_Modelo_Marca_Vehiculo" ColumnName="Id_Modelo_Marca_Vehiculo" />
+                <ScalarProperty Name="Cant_Puertas" ColumnName="Cant_Puertas" />
+                <ScalarProperty Name="Cant_Ruedas" ColumnName="Cant_Ruedas" />
+                <ScalarProperty Name="Anio_Fabricacion" ColumnName="Anio_Fabricacion" />
+                <ScalarProperty Name="Id_Vehiculo_Cliente" ColumnName="Id_Vehiculo_Cliente" />
+                <ScalarProperty Name="Id_Vehiculo1" ColumnName="Id_Vehiculo1" />
+                <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_UpdateCliente" FunctionName="progra6bdModel.Store.sp_UpdateCliente" />
+          <FunctionImportMapping FunctionImportName="sp_UpdateVehiculo" FunctionName="progra6bdModel.Store.sp_UpdateVehiculo" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="progra6bdModel.Store.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

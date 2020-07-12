@@ -24,7 +24,7 @@ namespace ProyectoProgra6.Models
         public int Id_Cliente { get; set; }
         public string Nombre { get; set; }
         public string Cedula { get; set; }
-        public int Id_Provincia { get; set; }
+        public int id_Provincia { get; set; }
         public int Id_Canton { get; set; }
         public int Id_Distrito { get; set; }
         public string Direccion_Fisica { get; set; }

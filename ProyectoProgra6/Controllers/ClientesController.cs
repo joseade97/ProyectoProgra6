@@ -9,7 +9,7 @@ namespace ProyectoProgra6.Controllers
 {
     public class ClientesController : Controller
     {
-        progra6bdEntities1 modeloBD = new progra6bdEntities1();
+        progra6bdEntities modeloBD = new progra6bdEntities();
         // GET: Clientes
         /// <summary>
         /// Metodo que se invoca al ingresar la direccion el navegador
@@ -47,17 +47,17 @@ namespace ProyectoProgra6.Controllers
             try
             {
                 cantRegistrosAfectados =
-                    this.modeloBD.sp_InsertCliente1(
-                        modeloVista.Nombre,
-                        modeloVista.PrimerApellido,
-                        modeloVista.SegundoApellido,                        
+                    this.modeloBD.sp_InsertCliente(
+                        modeloVista.Nombre,                                            
                         modeloVista.Cedula,                        
                         modeloVista.id_Provincia,
                         modeloVista.Id_Canton,
                         modeloVista.Id_Distrito,
                         modeloVista.Direccion_Fisica,
                         modeloVista.Telefono,
-                        modeloVista.Correo_Electronico
+                        modeloVista.Correo_Electronico,
+                        modeloVista.PrimerApellido,
+                        modeloVista.SegundoApellido
                         );
             }
             catch (Exception error)

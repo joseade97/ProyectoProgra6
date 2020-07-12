@@ -4,38 +4,38 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="fe66dd60312a4ed49285225b9e4783cc" Name="Diagram1">
-        <EntityTypeShape EntityType="ModeloBD.Cantones" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Casa_Fabricante_Vehiculo" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Cliente" Width="1.5" PointX="7.5" PointY="2.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Distritos" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Factura_Detalle" Width="1.5" PointX="12" PointY="3.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Factura_Encabezado" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Marca_Vehiculo" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Modelo_Marca_Vehiculo" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Pais" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Provincias" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.sysdiagrams" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Tipo_Servicio_Producto" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Tipo_Vehiculo" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Usuario" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Vehiculo" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="ModeloBD.Vehiculo_Cliente" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="ModeloBD.Canton_ref_Provincia" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.Distrito_ref_Canton" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Cliente_Cantones" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Casa_Fabricante_Vehiculo_Pais" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Cliente_Distritos" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Cliente_Provincias" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Factura_Encabezado_Cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Vehiculo_Cliente_Cliente" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Factura_Detalle_Factura_Encabezado" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Factura_Detalle_Tipo_Servicio_Producto" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Vehiculo_Modelo_Marca_Vehiculo" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Vehiculo_Tipo_Vehiculo" ManuallyRouted="false" />
-        <AssociationConnector Association="ModeloBD.FK_Vehiculo_Cliente_Vehiculo" ManuallyRouted="false" />
+      <Diagram DiagramId="29aed97d6ec8403f88edb1bc11bdf02f" Name="Diagram1">
+        <EntityTypeShape EntityType="progra6bdModel.Cantones" Width="1.5" PointX="3" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Casa_Fabricante_Vehiculo" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Cliente" Width="1.5" PointX="7.5" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Distritos" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Factura_Detalle" Width="1.5" PointX="12" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Factura_Encabezado" Width="1.5" PointX="9.75" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Marca_Vehiculo" Width="1.5" PointX="3" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Modelo_Marca_Vehiculo" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Pais" Width="1.5" PointX="1.5" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Provincias" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.sysdiagrams" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Tipo_Servicio_Producto" Width="1.5" PointX="9.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Tipo_Vehiculo" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Usuario" Width="1.5" PointX="11.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Vehiculo" Width="1.5" PointX="7.5" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="progra6bdModel.Vehiculo_Cliente" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="progra6bdModel.Canton_ref_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.Distrito_ref_Canton" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Cliente_Cantones" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Casa_Fabricante_Vehiculo_Pais" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Marca_Vehiculo_Casa_Fabricante_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Cliente_Distritos" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Cliente_Provincias" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Factura_Encabezado_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Vehiculo_Cliente_Cliente" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Factura_Detalle_Factura_Encabezado" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Factura_Detalle_Tipo_Servicio_Producto" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Modelo_Marca_Vehiculo_Marca_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Vehiculo_Modelo_Marca_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Vehiculo_Tipo_Vehiculo" ManuallyRouted="false" />
+        <AssociationConnector Association="progra6bdModel.FK_Vehiculo_Cliente_Vehiculo" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
