@@ -14,12 +14,15 @@ namespace ProyectoProgra6.Models
     public partial class sp_RetornaCliente_ID_Result
     {
         public int Id_Cliente { get; set; }
+        public string Nombre { get; set; }
+        public string Cedula { get; set; }
+        public int id_Provincia { get; set; }
+        public int id_Canton { get; set; }
+        public int id_Distrito { get; set; }
+        public string Direccion_Fisica { get; set; }
+        public int Telefono { get; set; }
+        public string Correo_Electronico { get; set; }
         public string primerApellido { get; set; }
         public string segundoApellido { get; set; }
-        public string nombre { get; set; }
-        public int telefono { get; set; }
-        public string Correo_Electronico { get; set; }
-        public int id_Provincia { get; set; }
-        public string nombreProvincia { get; set; }
     }
 }

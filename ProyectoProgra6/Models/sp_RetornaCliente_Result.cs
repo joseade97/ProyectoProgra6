@@ -21,7 +21,9 @@ namespace ProyectoProgra6.Models
         public int id_Provincia { get; set; }
         public string nombreProvincia { get; set; }
         public int Id_Canton { get; set; }
+        public string nombreCanton { get; set; }
         public int Id_Distrito { get; set; }
+        public string nombreDistrito { get; set; }
         public string Direccion_Fisica { get; set; }
         public int Telefono { get; set; }
         public string Correo_Electronico { get; set; }

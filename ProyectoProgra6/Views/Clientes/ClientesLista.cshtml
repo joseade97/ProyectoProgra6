@@ -12,23 +12,29 @@
     <tr>
         <th>Nombre Completo</th>
         <th>Correo</th>
+        <th>Telefono</th>
         <th>Provincia</th>
+        <th>Cantón</th>
+        <th>Distrito</th>
         <th>Acciones</th>
     </tr>
     @{
         foreach (ProyectoProgra6.Models.sp_RetornaCliente_Result posicionModelo
             in this.Model)
         {
-            <tr>
-                <td>@posicionModelo.Nombre @posicionModelo.PrimerApellido @posicionModelo.SegundoApellido</td>
-                <td>@posicionModelo.Correo_Electronico</td>
-                <td>@posicionModelo.nombreProvincia</td>
-                <td>
-                    <a href="~/Clientes/ClienteModifica?id_Persona=@posicionModelo.Id_Cliente">Modificar</a>
-                    <br />
-                    <a href="~/Clientes/ClienteElimina?id_Persona=@posicionModelo.Id_Cliente">Eliminar</a>
-                </td>
-            </tr>
+        <tr>
+            <td>@posicionModelo.Nombre @posicionModelo.PrimerApellido @posicionModelo.SegundoApellido</td>
+            <td>@posicionModelo.Correo_Electronico</td>
+            <td>@posicionModelo.Telefono</td>
+            <td>@posicionModelo.nombreProvincia</td>
+            <td>@posicionModelo.nombreCanton</td>
+            <td>@posicionModelo.nombreDistrito</td>
+            <td>
+                <a href="~/Clientes/ClienteModifica?Id_Cliente=@posicionModelo.Id_Cliente">Modificar</a>
+                <br />
+                <a href="~/Clientes/ClienteElimina?Id_Cliente=@posicionModelo.Id_Cliente">Eliminar</a>
+            </td>
+        </tr>
         }
     }
 </table>

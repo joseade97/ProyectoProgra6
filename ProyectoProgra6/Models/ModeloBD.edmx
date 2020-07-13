@@ -380,6 +380,9 @@
         <Function Name="sp_EliminaCanton" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_canton" Type="int" Mode="In" />
         </Function>
+        <Function Name="sp_EliminaCliente" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Id_Cliente" Type="int" Mode="In" />
+        </Function>
         <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
           <Parameter Name="owner_id" Type="int" Mode="In" />
@@ -440,7 +443,7 @@
           <Parameter Name="nombre" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_RetornaCliente_ID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="id_Persona" Type="int" Mode="In" />
+          <Parameter Name="id_Cliente" Type="int" Mode="In" />
         </Function>
         <Function Name="sp_RetornaDistritos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="nombre" Type="varchar" Mode="In" />
@@ -465,6 +468,8 @@
           <Parameter Name="direccion_fisica" Type="varchar" Mode="In" />
           <Parameter Name="Telefono" Type="int" Mode="In" />
           <Parameter Name="Correo_electronico" Type="varchar" Mode="In" />
+          <Parameter Name="Primer_Apellido" Type="varchar" Mode="In" />
+          <Parameter Name="Segundo_Apellido" Type="varchar" Mode="In" />
         </Function>
         <Function Name="sp_UpdateVehiculo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="id_Vehiculo" Type="int" Mode="In" />
@@ -1100,7 +1105,7 @@
             <Parameter Name="nombre" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaCliente_ID" ReturnType="Collection(progra6bdModel.sp_RetornaCliente_ID_Result)">
-          <Parameter Name="id_Persona" Mode="In" Type="Int32" />
+          <Parameter Name="id_Cliente" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_RetornaDistritos" ReturnType="Collection(progra6bdModel.sp_RetornaDistritos_Result)">
             <Parameter Name="nombre" Mode="In" Type="String" />
@@ -1125,6 +1130,8 @@
             <Parameter Name="direccion_fisica" Mode="In" Type="String" />
             <Parameter Name="Telefono" Mode="In" Type="Int32" />
             <Parameter Name="Correo_electronico" Mode="In" Type="String" />
+            <Parameter Name="Primer_Apellido" Mode="In" Type="String" />
+            <Parameter Name="Segundo_Apellido" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="sp_UpdateVehiculo">
             <Parameter Name="id_Vehiculo" Mode="In" Type="Int32" />
@@ -1137,6 +1144,9 @@
             <Parameter Name="Anio_Fabricacion" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="sp_upgraddiagrams" />
+          <FunctionImport Name="sp_EliminaCliente">
+            <Parameter Name="Id_Cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1182,20 +1192,25 @@
           <Property Type="Int32" Name="id_Provincia" Nullable="false" />
           <Property Type="String" Name="nombreProvincia" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="Id_Canton" Nullable="false" />
+          <Property Type="String" Name="nombreCanton" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="Id_Distrito" Nullable="false" />
+          <Property Type="String" Name="nombreDistrito" Nullable="false" MaxLength="100" />
           <Property Type="String" Name="Direccion_Fisica" Nullable="false" MaxLength="100" />
           <Property Type="Int32" Name="Telefono" Nullable="false" />
           <Property Type="String" Name="Correo_Electronico" Nullable="false" MaxLength="50" />
         </ComplexType>
         <ComplexType Name="sp_RetornaCliente_ID_Result">
           <Property Type="Int32" Name="Id_Cliente" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="Cedula" Nullable="false" MaxLength="20" />
+          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="id_Canton" Nullable="false" />
+          <Property Type="Int32" Name="id_Distrito" Nullable="false" />
+          <Property Type="String" Name="Direccion_Fisica" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Telefono" Nullable="false" />
+          <Property Type="String" Name="Correo_Electronico" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="primerApellido" Nullable="false" MaxLength="50" />
           <Property Type="String" Name="segundoApellido" Nullable="true" MaxLength="50" />
-          <Property Type="String" Name="nombre" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="telefono" Nullable="false" />
-          <Property Type="String" Name="Correo_Electronico" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="id_Provincia" Nullable="false" />
-          <Property Type="String" Name="nombreProvincia" Nullable="false" MaxLength="100" />
         </ComplexType>
         <ComplexType Name="sp_RetornaDistritos_Result">
           <Property Type="Int32" Name="id_distrito" Nullable="false" />
@@ -1496,7 +1511,9 @@
                 <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
                 <ScalarProperty Name="nombreProvincia" ColumnName="nombreProvincia" />
                 <ScalarProperty Name="Id_Canton" ColumnName="Id_Canton" />
+                <ScalarProperty Name="nombreCanton" ColumnName="nombreCanton" />
                 <ScalarProperty Name="Id_Distrito" ColumnName="Id_Distrito" />
+                <ScalarProperty Name="nombreDistrito" ColumnName="nombreDistrito" />
                 <ScalarProperty Name="Direccion_Fisica" ColumnName="Direccion_Fisica" />
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
@@ -1507,13 +1524,16 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="progra6bdModel.sp_RetornaCliente_ID_Result">
                 <ScalarProperty Name="Id_Cliente" ColumnName="Id_Cliente" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
+                <ScalarProperty Name="id_Canton" ColumnName="id_Canton" />
+                <ScalarProperty Name="id_Distrito" ColumnName="id_Distrito" />
+                <ScalarProperty Name="Direccion_Fisica" ColumnName="Direccion_Fisica" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
                 <ScalarProperty Name="primerApellido" ColumnName="primerApellido" />
                 <ScalarProperty Name="segundoApellido" ColumnName="segundoApellido" />
-                <ScalarProperty Name="nombre" ColumnName="nombre" />
-                <ScalarProperty Name="telefono" ColumnName="telefono" />
-                <ScalarProperty Name="Correo_Electronico" ColumnName="Correo_Electronico" />
-                <ScalarProperty Name="id_Provincia" ColumnName="id_Provincia" />
-                <ScalarProperty Name="nombreProvincia" ColumnName="nombreProvincia" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1567,6 +1587,7 @@
           <FunctionImportMapping FunctionImportName="sp_UpdateCliente" FunctionName="progra6bdModel.Store.sp_UpdateCliente" />
           <FunctionImportMapping FunctionImportName="sp_UpdateVehiculo" FunctionName="progra6bdModel.Store.sp_UpdateVehiculo" />
           <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="progra6bdModel.Store.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_EliminaCliente" FunctionName="progra6bdModel.Store.sp_EliminaCliente" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

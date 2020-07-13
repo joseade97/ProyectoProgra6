@@ -329,13 +329,13 @@ namespace ProyectoProgra6.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_Result>("sp_RetornaCliente", primerApellidoParameter, segundoApellidoParameter, nombreParameter);
         }
     
-        public virtual ObjectResult<sp_RetornaCliente_ID_Result> sp_RetornaCliente_ID(Nullable<int> id_Persona)
+        public virtual ObjectResult<sp_RetornaCliente_ID_Result> sp_RetornaCliente_ID(Nullable<int> id_Cliente)
         {
-            var id_PersonaParameter = id_Persona.HasValue ?
-                new ObjectParameter("id_Persona", id_Persona) :
-                new ObjectParameter("id_Persona", typeof(int));
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("id_Cliente", id_Cliente) :
+                new ObjectParameter("id_Cliente", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_ID_Result>("sp_RetornaCliente_ID", id_PersonaParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_RetornaCliente_ID_Result>("sp_RetornaCliente_ID", id_ClienteParameter);
         }
     
         public virtual ObjectResult<sp_RetornaDistritos_Result> sp_RetornaDistritos(string nombre, Nullable<int> id_canton)
@@ -378,7 +378,7 @@ namespace ProyectoProgra6.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_SelectVehiculoCliente_Result>("sp_SelectVehiculoCliente", id_ClienteParameter);
         }
     
-        public virtual int sp_UpdateCliente(Nullable<int> id_Cliente, string nombre, string cedula, Nullable<int> id_provincia, Nullable<int> id_canton, Nullable<int> id_distrito, string direccion_fisica, Nullable<int> telefono, string correo_electronico)
+        public virtual int sp_UpdateCliente(Nullable<int> id_Cliente, string nombre, string cedula, Nullable<int> id_provincia, Nullable<int> id_canton, Nullable<int> id_distrito, string direccion_fisica, Nullable<int> telefono, string correo_electronico, string primer_Apellido, string segundo_Apellido)
         {
             var id_ClienteParameter = id_Cliente.HasValue ?
                 new ObjectParameter("id_Cliente", id_Cliente) :
@@ -416,7 +416,15 @@ namespace ProyectoProgra6.Models
                 new ObjectParameter("Correo_electronico", correo_electronico) :
                 new ObjectParameter("Correo_electronico", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateCliente", id_ClienteParameter, nombreParameter, cedulaParameter, id_provinciaParameter, id_cantonParameter, id_distritoParameter, direccion_fisicaParameter, telefonoParameter, correo_electronicoParameter);
+            var primer_ApellidoParameter = primer_Apellido != null ?
+                new ObjectParameter("Primer_Apellido", primer_Apellido) :
+                new ObjectParameter("Primer_Apellido", typeof(string));
+    
+            var segundo_ApellidoParameter = segundo_Apellido != null ?
+                new ObjectParameter("Segundo_Apellido", segundo_Apellido) :
+                new ObjectParameter("Segundo_Apellido", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_UpdateCliente", id_ClienteParameter, nombreParameter, cedulaParameter, id_provinciaParameter, id_cantonParameter, id_distritoParameter, direccion_fisicaParameter, telefonoParameter, correo_electronicoParameter, primer_ApellidoParameter, segundo_ApellidoParameter);
         }
     
         public virtual int sp_UpdateVehiculo(Nullable<int> id_Vehiculo, string placa, string marca, Nullable<int> id_Tipo_Vehiculo, Nullable<int> id_Modelo_Marca_Vehiculo, Nullable<int> cant_Puertas, Nullable<int> ruedas, Nullable<int> anio_Fabricacion)
@@ -459,6 +467,15 @@ namespace ProyectoProgra6.Models
         public virtual int sp_upgraddiagrams()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_upgraddiagrams");
+        }
+    
+        public virtual int sp_EliminaCliente(Nullable<int> id_Cliente)
+        {
+            var id_ClienteParameter = id_Cliente.HasValue ?
+                new ObjectParameter("Id_Cliente", id_Cliente) :
+                new ObjectParameter("Id_Cliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_EliminaCliente", id_ClienteParameter);
         }
     }
 }

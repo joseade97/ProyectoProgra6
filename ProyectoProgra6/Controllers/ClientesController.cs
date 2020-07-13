@@ -35,6 +35,9 @@ namespace ProyectoProgra6.Controllers
 
         public ActionResult ClienteNuevo()
         {
+            AgregaProvinciasViewBag();
+            AgregaCantonesViewBag();
+            AgregaDistritosViewBag();
             return View();
         }
 
@@ -77,7 +80,134 @@ namespace ProyectoProgra6.Controllers
             }
 
             Response.Write("<script language=javascript>alert('" + resultado + "');</script>");
+            AgregaProvinciasViewBag();
+            AgregaCantonesViewBag();
+            AgregaDistritosViewBag();
             return View();
+        }
+
+        public ActionResult ClienteModifica(int Id_Cliente)
+        {
+            ///obtener el registro que se desea modificar
+            ///utilizando el parametro del metodo Id_Cliente
+            sp_RetornaCliente_ID_Result modeloVista = new sp_RetornaCliente_ID_Result();
+            modeloVista = this.modeloBD.sp_RetornaCliente_ID(Id_Cliente).FirstOrDefault();
+            this.AgregaProvinciasViewBag();
+            this.AgregaCantonesViewBag();
+            this.AgregaDistritosViewBag();
+            ///enviar el modelo a la vista
+            return View(modeloVista);
+        }
+
+        [HttpPost]
+        public ActionResult ClienteModifica(sp_RetornaCliente_ID_Result modeloVista)
+        {
+            /*Variable que registra la cantidad de registros afectados
+             * si un procedimiento que ejectua insert, update o delete
+             * no afecta registros implica que hubo un error
+             */
+            int cantRegistrosAfectados = 0;
+            string resultado = "";
+            try
+            {
+                cantRegistrosAfectados = this.modeloBD.sp_UpdateCliente(
+                    modeloVista.Id_Cliente,
+                    modeloVista.Nombre,
+                    modeloVista.Cedula,
+                    modeloVista.id_Provincia,
+                    modeloVista.id_Canton,
+                    modeloVista.id_Distrito,
+                    modeloVista.Direccion_Fisica,
+                    modeloVista.Telefono,
+                    modeloVista.Correo_Electronico,
+                    modeloVista.primerApellido,
+                    modeloVista.segundoApellido
+                    );
+            }
+            catch (Exception error)
+            {
+                resultado = "Ocurrio un error" + error.Message;
+            }
+            finally
+            {
+                if (cantRegistrosAfectados > 0)
+                {
+                    resultado = "El registro fue modificado";
+                }
+                else
+                {
+                    resultado += "No se pudo modificar";
+                }
+            }
+            Response.Write("<script language=javascript>alert('" + resultado + "');</script>");
+            this.AgregaProvinciasViewBag();
+            this.AgregaCantonesViewBag();
+            this.AgregaDistritosViewBag();
+            return View(modeloVista);
+        }
+
+        public ActionResult ClienteElimina(int id_Cliente)
+        {
+            sp_RetornaCliente_ID_Result modeloVista = new sp_RetornaCliente_ID_Result();
+            modeloVista = this.modeloBD.sp_RetornaCliente_ID(id_Cliente).FirstOrDefault();
+            this.AgregaProvinciasViewBag();
+            this.AgregaCantonesViewBag();
+            this.AgregaDistritosViewBag();
+            return View(modeloVista);
+        }
+
+        [HttpPost]
+        public ActionResult ClienteElimina(sp_RetornaCliente_ID_Result modeloVista)
+        {
+            /*Variable que registra la cantidad de registros afectados
+             * si un procedimiento que ejectua insert, update o delete
+             * no afecta registros implica que hubo un error
+             */
+            int cantRegistrosAfectados = 0;
+            string resultado = "";
+            try
+            {
+                cantRegistrosAfectados =
+                    this.modeloBD.sp_EliminaCliente(modeloVista.Id_Cliente);
+            }
+            catch (Exception error)
+            {
+
+                resultado = "Ocurrio un error: " + error.Message;
+            }
+            finally
+            {
+                if (cantRegistrosAfectados > 0)
+                {
+                    resultado = "El registro fue eliminado";
+                }
+                else
+                {
+                    resultado += "No se pudo modificar";
+                }
+            }
+            Response.Write("<script language=javascript>alert('" + resultado + "');</script>");
+            this.AgregaProvinciasViewBag();
+            this.AgregaCantonesViewBag();
+            this.AgregaDistritosViewBag();
+            return View(modeloVista);
+        }
+
+        void AgregaProvinciasViewBag()
+        {
+            this.ViewBag.ListaProvincias =
+                this.modeloBD.sp_RetornaProvincias("").ToList();
+        }
+
+        void AgregaCantonesViewBag()
+        {
+            this.ViewBag.ListaCantones =
+                this.modeloBD.sp_RetornaCantones("",null).ToList();
+        }
+        void AgregaDistritosViewBag()
+        {
+            this.ViewBag.ListaDistritos =
+                this.modeloBD.sp_RetornaDistritos("", null).ToList();
         }
     }
 }

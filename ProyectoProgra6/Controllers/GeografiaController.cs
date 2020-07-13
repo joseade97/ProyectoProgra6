@@ -39,7 +39,7 @@ namespace ProyectoProgra6.Controllers
         /// <summary>
         /// Retorna todas las distritos
         /// </summary>
-        /// <param name="idcanton">id de canton</param>
+        /// <param name="id_canton">id de canton</param>
         /// <returns></returns>
         public ActionResult RetornaDistritos(int id_Canton)
         {
